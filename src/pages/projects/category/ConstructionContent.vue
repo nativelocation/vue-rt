@@ -4,7 +4,7 @@
             Project {{getCurrentProject}}
         </div>
         <div class="category-construction-content">
-            <div class="d-flex mb-3">
+            <div class="d-flex flex-wrap mb-3">
                 <div class="col-3 pl-0">
                     <div class="mb-4">
                         <div class="category-construction-table-title d-flex align-items-center pl-3">
@@ -543,7 +543,6 @@
 </script>
 
 <style lang="sass">
-    @import '~styles/fonts';
     @import '~styles/variables';
     .category-construction-title {
         padding: 1rem 4%;

@@ -3,7 +3,7 @@
         <div class="reports-title d-flex align-items-center">
             Reports
         </div>
-        <div class="reports-content d-flex">
+        <div class="reports-content d-flex flex-wrap">
             <div class="col-sm-2 mr-3 p-0 border border-secondary">
                 <div class="reports-name-container d-flex align-items-center">
                     Reports
@@ -121,7 +121,6 @@
 </script>
 
 <style lang="sass">
-    @import '~styles/fonts';
     @import '~styles/variables';
     #Home {
         .reports-title {

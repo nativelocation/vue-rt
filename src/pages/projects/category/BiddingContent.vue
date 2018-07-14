@@ -4,7 +4,7 @@
             Project {{getCurrentProject}}
         </div>
         <div class="category-bidding-content">
-            <div class="d-flex">
+            <div class="d-flex flex-wrap">
                 <div class="col-3 pl-0">
                     <div class="mb-4">
                         <div class="category-bidding-table-title d-flex align-items-center pl-3">
@@ -13,7 +13,7 @@
                         <div
                             v-for="(column, index) in project.columns"
                             :key="index"
-                            class="d-flex align-items-center"
+                            class="d-flex flex-wrap align-items-center"
                         >
                             <div
                                 :class="column.thClass"
@@ -453,7 +453,6 @@
 </script>
 
 <style lang="sass">
-    @import '~styles/fonts';
     @import '~styles/variables';
     .category-bidding-title {
         padding: 1rem 4%;

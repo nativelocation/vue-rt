@@ -1,7 +1,10 @@
 <template>
     <div id="app">
-        <appHeader></appHeader>
-        <div role="main" class="app-content">
+        <div
+            role="main"
+            class="app-content"
+            :class="$route.name === 'dashboard' ? 'app-content-bg' : ''"
+        >
 			<router-view></router-view>
 		</div>
         <appFooter></appFooter>
@@ -9,7 +12,6 @@
 </template>
 
 <script type="text/babel">
-    import appHeader from './components/Header.vue'
     import appFooter from './components/Footer.vue'
     import 'bootstrap/dist/css/bootstrap.css'
     import 'bootstrap-vue/dist/bootstrap-vue.css'
@@ -18,13 +20,13 @@
     Vue.use(BootstrapVue);
     export default {
         components: {
-            appHeader,
             appFooter
         }
     }
 </script>
 
 <style lang="sass">
+    @import '~styles/fonts';
     @import '~styles/variables';
     @import '../node_modules/bootstrap/scss/bootstrap.scss';
     html, body, #app {
@@ -32,9 +34,12 @@
     }
     #app {
         .app-content {
-            min-height: calc( 100% - 72px );
+            min-height: 100%;
             margin-bottom: -48px;
             padding-bottom: 48px;
+        }
+        .app-content-bg {
+            background: $gray-200;
         }
     }
 </style>

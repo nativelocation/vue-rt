@@ -12,7 +12,7 @@
             </div>
         </div>
         <div class="category-planning-content">
-            <div class="d-flex">
+            <div class="d-flex flex-wrap">
                 <div class="col-3 pl-0">
                     <div class="mb-4">
                         <div class="category-planning-table-title d-flex align-items-center pl-3">
@@ -337,7 +337,6 @@
 </script>
 
 <style lang="sass">
-    @import '~styles/fonts';
     @import '~styles/variables';
     .category-planning-title {
         padding: 1rem 4%;

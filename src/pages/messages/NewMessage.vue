@@ -245,7 +245,6 @@
 </script>
 
 <style lang="sass">
-@import '~styles/fonts';
     @import '~styles/variables';
     .category-new-title {
         padding: 1rem 4%;

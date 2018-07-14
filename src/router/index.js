@@ -17,6 +17,12 @@ import MessagesCategory from '../pages/messages/MessagesCategory.vue'
 import Messages from '../pages/messages/Messages.vue'
 import NewMessage from '../pages/messages/NewMessage.vue'
 import Help from '../pages/messages/Help.vue'
+import DashboardContainer from '../pages/dashboard/index.vue'
+import Dashboard from '../pages/dashboard/Dashboard.vue'
+import Sidebar from '../pages/dashboard/Sidebar.vue'
+import Profile from '../pages/dashboard/Profile.vue'
+import Setting from '../pages/dashboard/Setting.vue'
+import Security from '../pages/dashboard/Security.vue'
 
 Vue.use(Router)
 
@@ -106,6 +112,40 @@ const router = new Router({
 					path: '/messages/help',
 					component: Help,
 					name: 'Frequently Asked Questions'
+				}
+			]
+		},
+		{
+			path: '/dashboard',
+			component: DashboardContainer,
+			name: 'dashboard-container',
+			children: [
+				{
+					path: '/dashboard',
+					component: Dashboard,
+					name: 'dashboard'
+				},
+				{
+					path: '/dashboard/profile',
+					component: Sidebar,
+					name: 'profile',
+					children: [
+						{
+							path: '/dashboard/profile',
+							component: Profile,
+							name: 'profile'
+						},
+						{
+							path: '/dashboard/security',
+							component: Security,
+							name: 'security'
+						},
+						{
+							path: '/dashboard/setting',
+							component: Setting,
+							name: 'setting'
+						}
+					]
 				}
 			]
 		}

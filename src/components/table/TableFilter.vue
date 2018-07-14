@@ -1,9 +1,12 @@
 <template>
     <div id="table-filter" class="pr-2 pl-2">
-        <div class="d-flex align-items-center">
+        <div class="h-100 d-flex align-items-center">
             <label>Search</label>
             <div class="search-filter d-flex align-items-center pl-2 pr-2 ml-2 mr-2">
-                <font-awesome-icon :icon="faSearch" class="search-filter-icon mr-1"/>
+                <font-awesome-icon
+                    :icon="faSearch"
+                    class="search-filter-icon mr-1"
+                />
                 <input
                     class="search-filter-input"
                     placeholder="Search"

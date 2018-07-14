@@ -1,5 +1,5 @@
 <template>
-    <div id="header">
+    <div id="header" class="home-header">
         <div class="container-fluid p-0 m-0">
             <div
                 class="menu-bar px-3 d-flex justify-content-between align-items-center"
@@ -7,7 +7,13 @@
             >
                 <div class="icon-menu-title d-flex justify-content-around align-items-center">
                     <div class="site-title">
-                        <router-link class="text-logo" to="/" exact>OneOffice</router-link>
+                        <router-link
+                            class="text-logo"
+                            to="/"
+                            exact
+                        >
+                            OneOffice
+                        </router-link>
                         <span class="ml-3 mr-2">|</span>
                         Hennepin Co
                     </div>
@@ -133,9 +139,8 @@
 </script>
 
 <style lang="sass">
-    @import '~styles/fonts';
     @import '~styles/variables';
-    #header {
+    #header.home-header {
         .container-fluid {
             .text-logo, .text-logo.hover {
                 color: $black;

@@ -3,7 +3,7 @@
         <div class="container-fluid p-0">
             <div
                 class="content d-flex justify-content-between align-items-center"
-                :class="user_role"
+                :class="authState ? 'internal' : 'public'"
             >
                 <div>@OneOffice 2018</div>
                 <div>Privacy | Security | Terms of Service</div>
@@ -13,10 +13,17 @@
 </template>
 
 <script>
+    import { mapActions, mapState } from 'vuex'
     export default {
         computed: {
             user_role() {
-                return 'public'
+                return this.$route.name === 'dashboard' ? 'internal' : 'public'
+            },
+            ...mapState([
+                'login'
+            ]),
+            authState() {
+                return this.login.token === 'Test Login' ? true : false
             }
         }
     }

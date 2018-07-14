@@ -106,7 +106,6 @@
 </script>
 
 <style lang="sass">
-    @import '~styles/fonts';
     @import '~styles/variables';
     #Home {
         .bidding-title {

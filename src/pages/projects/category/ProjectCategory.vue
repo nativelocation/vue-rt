@@ -1,8 +1,15 @@
 <template>
     <div id="projects-category" class="projects-banner">
+        <homeHeader></homeHeader>
         <div class="projects-category-banner">
             <div class="projects-category-path">
-                <router-link class="all-project" to="/projects" exact>Projects</router-link> > Projects in {{$route.name}}
+                <router-link
+                    class="all-project"
+                    to="/projects"
+                    exact
+                >
+                    Projects
+                </router-link> > Projects in {{$route.name}}
             </div>
         </div>
         <router-view></router-view>
@@ -10,10 +17,15 @@
 </template>
 
 <script>
+    import homeHeader from '../../../components/header/Homeheader.vue'
+    export default {
+        components: {
+            homeHeader
+        }
+    }
 </script>
 
 <style lang="sass">
-    @import '~styles/fonts';
     @import '~styles/variables';
     #projects-category {
         .projects-category-banner {

@@ -20,7 +20,7 @@
                         <input placeholder='Password' class="border-0 py-0 px-2 m-0" />
                     </div>
                     <div class="mt-3 d-flex justify-content-between align-items-center">
-                        <div class="local-password">Local your password?</div>
+                        <div class="lost-password">Lost your password?</div>
                         <div class="login-btn px-2">Log In</div>
                     </div>
                 </div>
@@ -33,7 +33,6 @@
 </script>
 
 <style lang="sass">
-    @import '~styles/fonts';
     @import '~styles/variables';
     #Home {
         .login-title {
@@ -66,7 +65,7 @@
                     font-size: 16px;
                     font-family: arial;
                 }
-                .local-password {
+                .lost-password {
                     font-size: 10px;
                     font-family: arial;
                     font-weight: 100;

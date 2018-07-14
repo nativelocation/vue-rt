@@ -95,7 +95,6 @@
 </script>
 
 <style lang="sass">
-    @import '~styles/fonts';
     @import '~styles/variables';
     #banner.top-banner {
         position: relative;

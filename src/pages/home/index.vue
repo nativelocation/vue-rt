@@ -1,5 +1,6 @@
 <template>
     <div id="Home">
+        <homeHeader></homeHeader>
         <div class="container-fluid p-0 m-0">
             <Banner />
             <router-view></router-view>
@@ -8,16 +9,17 @@
 </template>
 
 <script>
+    import homeHeader from '../../components/header/Homeheader.vue'
     import Banner from '../../components/Banner.vue'
     export default {
         components: {
+            homeHeader,
             Banner
         }
     }
 </script>
 
 <style lang="sass">
-    @import '~styles/fonts';
     @import '~styles/variables';
     #Home {
         .container-fluid {

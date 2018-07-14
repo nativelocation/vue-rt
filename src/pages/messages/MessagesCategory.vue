@@ -1,8 +1,15 @@
 <template>
     <div id="messages-category" class="messages-banner">
+        <homeHeader></homeHeader>
         <div class="messages-category-banner">
             <div class="messages-category-path">
-                <router-link class="all-message" to="/messages" exact>Messages</router-link> > {{$route.name}}
+                <router-link
+                    class="all-message"
+                    to="/messages"
+                    exact
+                >
+                    Messages
+                </router-link> > {{$route.name}}
             </div>
         </div>
         <router-view></router-view>
@@ -10,10 +17,15 @@
 </template>
 
 <script>
+    import homeHeader from '../../components/header/Homeheader.vue'
+    export default {
+        components: {
+            homeHeader
+        }
+    }
 </script>
 
 <style lang="sass">
-    @import '~styles/fonts';
     @import '~styles/variables';
     #messages-category {
         .messages-category-banner {

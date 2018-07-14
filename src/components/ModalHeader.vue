@@ -4,7 +4,10 @@
             <div class="header-title">{{ title }}</div>
             <div class="header-action-btn">
                 <font-awesome-icon :icon="faQuestion" />
-                <font-awesome-icon :icon="faTimes" />
+                <font-awesome-icon
+                    :icon="faTimes"
+                    @click="handleClose"
+                />
             </div>
         </div>
     </div>
@@ -19,6 +22,10 @@
             title: {
                 type: String,
                 default: ''
+            },
+            handleClose: {
+                type: Function,
+                default: () => []
             }
         },
         computed: {

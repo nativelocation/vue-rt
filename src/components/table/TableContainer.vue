@@ -4,6 +4,12 @@
             :columns="columns"
             :rows="rowData"
         />
+        <!-- <b-table
+            :items="rowData"
+            :fields="columns"
+            border
+            class="border-0 m-0"
+        /> -->
     </div>
 </template>
 
@@ -99,4 +105,5 @@
     }
 </script>
 
-<style lang="sass"></style>
+<style lang="sass">
+</style>

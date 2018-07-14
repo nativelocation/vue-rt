@@ -6,19 +6,19 @@
                 <div class="category-help-table-title d-flex align-items-center pl-3">
                     Frequently Asked Question
                 </div>
-                <div class="d-flex container-border">
+                <div class="d-flex flex-wrap container-border border-bottom-0">
                     <div class="col-sm-3 p-0">
                         <div
                             v-for="(item, index) in faqsTitle"
                             :key="index"
-                            class="faq-contnent"
+                            class="faq-contnent border-top-0"
                             @click="faqSelector(index)"
                             :class="index === selectedfaq ? 'faq-select' : ''"
                         >
                             {{item}}
                         </div>
                     </div>
-                    <textarea v-model="faqs[selectedfaq]" class="faq-contnent col-sm-9 p-1 border-left-0"></textarea>
+                    <div class="faq-contnent text-prewrap col-sm-9 p-1 border-top-0">{{faqs[selectedfaq]}}</div>
                 </div>
             </div>
         </div>
@@ -41,11 +41,11 @@
                     'To optimize the use of eGram, the counties and cities must ensure that their eGram servers are operational. If you are getting a long load time when viewing your district, one of the eGram servers in your district might be experiencing problems. The server may be down or misconfigured, or may be having network issues. You may want to notify the owners of the server to make them aware of the problem.',
                     `If you are getting a "Your browser is not currently set to accept cookies" message or something similar, please check that your browser is configured to accept cookies.
 
-                    Resolution for Internet Explorer
+Resolution for Internet Explorer
 
-                    Navigate to Tools > Internet Options > Click on the Privacy tab
+Navigate to Tools > Internet Options > Click on the Privacy tab
 
-                    Adjust the slider to "Low" or "Accept All Cookies"`
+Adjust the slider to "Low" or "Accept All Cookies"`
                 ],
                 selectedfaq: ''
             }
@@ -59,7 +59,6 @@
 </script>
 
 <style lang="sass">
-    @import '~styles/fonts';
     @import '~styles/variables';
     .category-help-title {
         padding: 1rem 4%;
@@ -74,7 +73,6 @@
         height: 42px;
         background: $gray-400;
         border: solid 1px $gray-600;
-        border-bottom: 0px;
         color: $black;
         font-size: 20px;
         font-family: cabin;
@@ -84,7 +82,6 @@
         min-height: 22px;
         background: $white;
         border: solid 1px $gray-600;
-        border-bottom: 0;
         color: $black;
         padding: 0;
         padding-left: 5px;
@@ -94,6 +91,9 @@
     }
     .faq-select {
         background: $gray-200;
+    }
+    .text-prewrap {
+        white-space: pre-wrap;
     }
     .container-border {
         border-bottom: solid 1px $gray-600;
