@@ -1,0 +1,121 @@
+{
+    "configurations": {
+        "filters": [
+            {
+                "field": "projectId",
+                "placeholder": "Project ID",
+                "options": [
+                    {
+                        "label": "projectId100"
+                    },
+                    {
+                        "label": "projectId101"
+                    },
+                    {
+                        "label": "projectId102"
+                    }
+                ],
+                "style": {
+                    "backgroundColor": "white",
+                    "color": "black",
+                    "fontSize": 10
+                }
+            },
+            {
+                "field": "projectNo",
+                "placeholder": "Project No",
+                "options": [
+                    {
+                        "label": "projectNo1"
+                    },
+                    {
+                        "label": "projectNo2"
+                    },
+                    {
+                        "label": "projectNo3"
+                    }
+                ],
+                "style": {
+                    "backgroundColor": "white",
+                    "color": "black",
+                    "fontSize": 10
+                }
+            }
+        ],
+        "columns": [
+            {
+                "key": "contractNo",
+                "label": "Contact No.",
+                "style": {
+                    "backgroundColor": "white",
+                    "color": "blue",
+                    "fontSize": 10
+                }
+            },
+            {
+                "key": "projectId",
+                "label": "Project ID",
+                "style": {
+                    "backgroundColor": "white",
+                    "color": "black",
+                    "fontSize": 10
+                }
+            },
+            {
+                "key": "projectNo",
+                "label": "Project No.",
+                "style": {
+                    "backgroundColor": "white",
+                    "color": "black",
+                    "fontSize": 10
+                }
+            },
+            {
+                "key": "description",
+                "label": "Description",
+                "style": {
+                    "backgroundColor": "white",
+                    "color": "black",
+                    "fontSize": 10
+                }
+            },
+            {
+                "key": "location",
+                "label": "Construction Location",
+                "style": {
+                    "backgroundColor": "white",
+                    "color": "black",
+                    "fontSize": 10
+                }
+            }
+        ],
+        "header": {
+            "backgroundColor": "blue",
+            "color": "white",
+            "fontSize": 10
+        }
+    },
+    "data": [
+        {
+            "contractNo": "Contract No",
+            "projectId": "Project ID",
+            "projectNo": "Project No.",
+            "description": "Description",
+            "location": "Lorem Ipsum"
+        },
+        {
+            "contractNo": "Contract No",
+            "projectId": "Project ID",
+            "projectNo": "Project No.",
+            "description": "Description",
+            "location": "Lorem Ipsum"
+        },
+        {
+            "contractNo": "Contract No",
+            "projectId": "Project ID",
+            "projectNo": "Project No.",
+            "description": "Description",
+            "location": "Lorem Ipsum"
+        }
+    ]
+}
