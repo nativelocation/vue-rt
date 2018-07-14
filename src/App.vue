@@ -1,16 +1,17 @@
 <template>
 	<div id="app">
-		<app-header :menuItems="menuItems"></app-header>
+		<RTVCoreHeader :menuItems="menuItems"/>
+        <div role="main" class="app-content">
 			<router-view
-				:menuItems="menuItems">
-			</router-view>
-		<app-footer></app-footer>
+				:menuItems="menuItems"/>
+		</div>
+		<RTVCoreFooter/>
 	</div>
 </template>
 
 <script>
-import appHeader from '@/components/Header.vue';
-import appFooter from '@/components/Footer.vue';
+import RTVCoreHeader from '@/components/core/Header';
+import RTVCoreFooter from '@/components/core/Footer';
 
 export default {
 	name: 'app',
@@ -20,35 +21,22 @@ export default {
 		};
 	},
 	components: {
-		appHeader,
-		appFooter
+		RTVCoreHeader,
+		RTVCoreFooter
 	}
 };
 </script>
-
-<style>
-#loader {
-	margin: 1em auto;
-	display: block;
+<style lang="sass">
+@import '~$styles/variables';
+@import '../node_modules/bootstrap/scss/bootstrap.scss';
+html, body, #app {
+	height: 100%;
 }
-.alert-container {
-	position: fixed;
-	z-index: 9999999999999999999;
-}
-.alert-container:empty {
-	display: none;
-}
-.message-panel {
-	display: block;
-	height: 200px;
-	position: relative;
-	background: #555;
-	overflow-y: scroll;
-}
-.message-panel.hidden {
-	display: none;
-}
-.message-panel pre {
-	color: #fff;
+#app {
+	.app-content {
+		min-height: calc( 100% - 72px );
+		margin-bottom: -48px;
+		padding-bottom: 48px;
+	}
 }
 </style>

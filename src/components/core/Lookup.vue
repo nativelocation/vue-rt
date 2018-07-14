@@ -29,8 +29,8 @@
 </template>
 <script>
 export default {
-	name: 'Lookup',
-	data: function() {
+	name: 'RTVCoreLookup',
+	data: function () {
 		return {
 			inputValue: this.value,
 			filteredList: JSON.parse(JSON.stringify(this.list)),
@@ -38,12 +38,12 @@ export default {
 			validatedOnItemClicked: this.onItemClicked,
 			itemClicked: false,
 			inCreated: false
-		}
+		};
 	},
 	created: function () {
 		this.inCreated = true;
 		if (this.filter() === null) {
-			this.validatedFilter = function(value) {
+			this.validatedFilter = function (value) {
 				let disabledCount = 0;
 				let remainingEle = null;
 				this.filteredList = this.list.filter((ele) => {
@@ -55,7 +55,7 @@ export default {
 					}
 					const filter = ele.disabled || filterValue.indexOf(value) > -1;
 					if (filter && !ele.disabled) remainingEle = ele;
-					return filter
+					return filter;
 				});
 				if (this.filteredList.length === disabledCount + 1 && remainingEle.filterValue !== this.inputValue) {
 					this.inputValue = remainingEle.filterValue;
@@ -68,15 +68,15 @@ export default {
 		this.validatedFilter(this.inputValue); // filter right away
 		this.inCreated = false;
 		if (this.onItemClicked() === null) {
-			this.validatedOnItemClicked = function(event) {
+			this.validatedOnItemClicked = function (event) {
 				this.itemClicked = true;
 				this.$root.$emit('bv::hide::popover', this.id);
 				this.inputValue = event.target.dataset.filter;
 				this.$emit('input', JSON.parse(event.target.dataset.value));
-			}.bind(this)
+			}.bind(this);
 		}
 	},
-	mounted: function() {
+	mounted: function () {
 		/* Can't do this in created because the popover is not kept in the DOM when not open
 			and can only disable tooltips when the trigger element is in the DOM.
 			Mounted is called anytime something happens to the DOM so this checks if the popover
@@ -85,7 +85,7 @@ export default {
 		if (!this.tooltip) this.$root.$emit('bv::disable::tooltip');
 	},
 	watch: {
-		list: function(newList, oldList) {
+		list: function (newList, oldList) {
 			// act like in the setup phase
 			this.inCreated = true;
 			// update the list on new value
@@ -146,19 +146,19 @@ export default {
 		// Optional custom function to filter the list with first parameter of the value of the input
 		filter: {
 			type: Function,
-			default: function() { return null }
+			default: () => null
 		},
 		/* the following functions are passed the event object if other arguments are required are called wrapped your
 			Optional function to be called when the popover it opened
 		*/
 		onPopup: {
 			type: Function,
-			default: function () { return null }
+			default: () => null
 		},
 		// Optional function to be called when item in the list is clicked
 		onItemClicked: {
 			type: Function,
-			default: function() { return null }
+			default: () => null
 		},
 		caseInsensitive: {
 			type: Boolean,
@@ -166,7 +166,7 @@ export default {
 		}
 
 	}
-}
+};
 </script>
 <style>
 </style>

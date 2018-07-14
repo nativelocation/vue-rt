@@ -9,7 +9,7 @@ import OptimizeCSSAssetsPlugin from "optimize-css-assets-webpack-plugin";
 import FriendlyErrorsPlugin from 'friendly-errors-webpack-plugin';
 import CleanWebpackPlugin from 'clean-webpack-plugin';*/
 const path = require('path');
-const config = require('../config');
+const config = require('.');
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -34,21 +34,15 @@ module.exports = (env, argv) => {
 	const webpackConfig = {
 		mode: argv.mode,
 		entry: {
-			fetch: 'whatwg-fetch',
-			app: './src'
-		},
-		output: {
-			filename: assetsPath('js/[name].[hash].js'),
-			chunkFilename: assetsPath('js/[id].[hash].js'),
+			app: '@'
 		},
 		resolve: {
 			extensions: ['.js', '.vue', '.json', 'scss'],
 			alias: {
 				'vue$': 'vue/dist/vue.esm.js',
 				'@': resolve('src'),
-				'$styles': resolve('src/scss'),
-				'@fonts': resolve('src/assets/fonts'),
-				'@images': resolve('src/assets/images')
+				// @ symbol not being resoled with sass imports so defining this instead
+				'$styles': resolve('src/scss')
 			}
 		},
 		optimization: {
@@ -56,8 +50,8 @@ module.exports = (env, argv) => {
 			splitChunks: {
 				cacheGroups: {
 					commons: {
-					  test: /[\\/]node_modules[\\/]/,
 					  name: 'vendor',
+					  test: /[\\/]node_modules[\\/]/,
 					  chunks: 'all',
 					  minChunks: 2
 					},
@@ -65,7 +59,7 @@ module.exports = (env, argv) => {
 						name: 'styles',
 						test: /\.css$/,
 						chunks: 'all',
-						enforce: true
+						minChunks: 2
 					}
 				}
 			}
@@ -84,7 +78,7 @@ module.exports = (env, argv) => {
 				{
 					test: /\.s?[ac]ss$/,
 					use: [
-						isProduction ? MiniCssExtractPlugin.loader : 'vue-style-loader',
+						isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
 						'css-loader',
 						'sass-loader'
 					],
@@ -119,61 +113,54 @@ module.exports = (env, argv) => {
 			]
 		},
 		plugins: [
-			// extract all css to a single file
-			new MiniCssExtractPlugin({
-				// Options similar to the same options in webpackOptions.output
-				// both options are optional
-				filename: '[name].[hash].css',
-				chunkFilename: '[id].[hash].css',
-			}),
 			new VueLoaderPlugin(),
-			new webpack.IgnorePlugin(/^\.\/pdf.worker.js$/),
+			new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
 			new webpack.DefinePlugin({
 				'process.env.NODE_ENV': "'" + argv.mode + "'"
 			})
-				// copy custom static assets
-				//new CopyWebpackPlugin([
-				//	{
-				//		from: path.resolve(__dirname, '../static'),
-				//		to: config.build.assetsSubDirectory,
-				//		ignore: ['.*']
-				//	}
-				//])
 		]
 	}
+	const htmlPlugin = new HtmlWebpackPlugin({
+		filename: config.build.index,
+		template: 'config/templates/index.html',
+		inject: true,
+	})
 	if (argv.mode === "production") {
-		webpackConfig.output.publicPath = config.build.assetsPublicPath;
-		webpackConfig.output.path = config.build.assetsRoot,
+		webpackConfig.output = {
+			publicPath: config.build.assetsPublicPath,
+			path: config.dev.assetsRoot,
+			filename: assetsPath('js/[name].[chunkhash].js'),
+			chunkFilename: assetsPath('js/[name].[chunkhash].js')
+		}
+
 		webpackConfig.optimization.minimizer = [
 			new UglifyJsPlugin({
 				cache: true,
 				parallel: true,
-				sourceMap: true // set to true if you want JS source maps
+				sourceMap: true
 			}),
 			new OptimizeCSSAssetsPlugin({})
 		];
 		webpackConfig.plugins.push(
-			// https://stackoverflow.com/questions/25384360/how-to-prevent-moment-js-from-loading-locales-with-webpack
-			new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en/),
-			new CleanWebpackPlugin(['*.js*', '*.css*', 'static/js/*.*'], {
+			// cleanup old files
+			new CleanWebpackPlugin(['*'], {
 				root:config.build.assetsRoot
 			}),
-			// generate dist index.html with correct asset hash for caching.
-			// you can customize output by editing /index.html
-			// see https://github.com/ampedandwired/html-webpack-plugin
-			new HtmlWebpackPlugin({
-				filename: config.build.index,
-				template: 'config/templates/index.html',
-				inject: true,
-				minify: {
+			// extract all css to a single file
+			new MiniCssExtractPlugin({
+				// Options similar to the same options in webpackOptions.output
+				// both options are optional
+				filename: assetsPath('css/[name].[chunkhash].css'),
+				chunkFilename: assetsPath('css/[name].[chunkhash].css'),
+			}),
+		);
+		htmlPlugin.minify = {
 					removeComments: true,
 					collapseWhitespace: true,
 					removeAttributeQuotes: true
 					// more options:
 					// https://github.com/kangax/html-minifier#options-quick-reference
 				}
-			}),
-		);
 		if (config.build.productionGzip) {
 			const CompressionWebpackPlugin = require('compression-webpack-plugin');
 			webpackConfig.plugins.push(
@@ -186,30 +173,32 @@ module.exports = (env, argv) => {
 				})
 			);
 		}
-
-		if (config.build.bundleAnalyzerReport) {
-			const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-			webpackConfig.plugins.push(new BundleAnalyzerPlugin({analyzerHost: 'localhost', analyzerPort: 6062}));
-		}
 	} else if (argv.mode === "development") {
-		webpackConfig.output.publicPath = config.build.assetsPublicPath;
-		webpackConfig.output.path = config.dev.assetsRoot,
+		webpackConfig.output = {
+			publicPath: config.build.assetsPublicPath,
+			path: config.dev.assetsRoot,
+			filename: assetsPath('js/[name].js'),
+			chunkFilename: assetsPath('js/[name].js')
+		}
+
 		webpackConfig.watch = true;
 		webpackConfig.watchOptions = { ignored: /node_modules/ };
 		webpackConfig.plugins.push(
-			new HtmlWebpackPlugin({
-				filename: config.dev.index,
-				template: 'config/templates/index.html',
-				inject: true
-			}),
 			new FriendlyErrorsPlugin()
 		);
 		if (argv.hot) {
 			webpackConfig.plugins.push(new webpack.HotModuleReplacementPlugin());
 			Object.keys(webpackConfig.entry).forEach(function (name) {
-				webpackConfig.entry[name] = ['./build/dev-client'].concat(webpackConfig.entry[name]);
+				webpackConfig.entry[name] = ['./config/dev-client'].concat(webpackConfig.entry[name]);
 			});
 		}
 	}
+
+	if (config.build.bundleAnalyzerReport) {
+		const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+		webpackConfig.plugins.push(new BundleAnalyzerPlugin({analyzerHost: 'localhost', analyzerPort: 6062}));
+	}
+
+	webpackConfig.plugins.push(htmlPlugin);
 	return webpackConfig;
 };

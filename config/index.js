@@ -3,8 +3,8 @@ const path = require('path');
 
 module.exports = {
 	build: {
-		index: path.resolve(__dirname, '../html/index.html'),
-		assetsRoot: path.resolve(__dirname, '../html'),
+		index: path.resolve(__dirname, '../build/index.html'),
+		assetsRoot: path.resolve(__dirname, '../build'),
 		assetsSubDirectory: 'static',
 		assetsPublicPath: '/',
 		productionSourceMap: true,
@@ -23,7 +23,8 @@ module.exports = {
 	dev: {
 		port: 8080,
 		autoOpenBrowser: true,
-		assetsRoot: path.resolve(__dirname, '../html'),
+		index: path.resolve(__dirname, '../build/index.html'),
+		assetsRoot: path.resolve(__dirname, '../build'),
 		assetsSubDirectory: 'static',
 		assetsPublicPath: '/',
 		// CSS Sourcemaps off by default because relative paths are "buggy"
@@ -31,8 +32,7 @@ module.exports = {
 		// (https://github.com/webpack/css-loader#sourcemaps)
 		// In our experience, they generally work as expected,
 		// just be aware of this issue when enabling this option.
-		cssSourceMap: false,
-		index: path.resolve(__dirname, '../html/index.html'),
+		cssSourceMap: true,
 		proxyTable: {}
 	}
 };

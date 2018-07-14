@@ -1,14 +1,14 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import View from '@/components/View';
+import RTVCoreView from '@/components/core/View';
 
 Vue.use(Router);
 export default new Router({
 	routes: [
 		{
-			path: '/:app?',
+			path: '/:url*/:suburl1',
 			name: 'home',
-			component: View
+			component: RTVCoreView
 		}
 	]
 });

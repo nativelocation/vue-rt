@@ -153,4 +153,5 @@ function round (n, digits) {
 	}
 	return n;
 }
-export { fetchJSON, handleError, buildOptions, parallelLimit, groupChildArrayByParentId, filterUnchangedData, round };
+const copyObject = (obj) => JSON.parse(JSON.stringify(obj));
+export { fetchJSON, handleError, buildOptions, parallelLimit, groupChildArrayByParentId, filterUnchangedData, round, copyObject };

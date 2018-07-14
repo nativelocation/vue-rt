@@ -1,4 +1,5 @@
 {
+  "parser": "babel-eslint",
   "parserOptions": {
     "ecmaVersion": 8,
     "ecmaFeatures": {
@@ -19,20 +20,21 @@
     "promise",
     "standard",
     "async-await",
-	"vue",
-	"html"
+    "vue",
+    "html"
   ],
 
   "globals": {
     "document": false,
     "navigator": false,
     "window": false,
-	"process": false,
-	"fetch": true
+    "process": false,
+    "import": false,
+    "fetch": true
   },
 
   "rules": {
-	"arrow-spacing": "error",
+    "arrow-spacing": "error",
     "accessor-pairs": "error",
     "arrow-spacing": ["error", { "before": true, "after": true }],
     "async-await/space-after-async": 2,

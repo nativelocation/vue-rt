@@ -1,13 +1,16 @@
 {
   "presets": [
-    ["env", { "modules": false }],
+    ["env", {
+		"modules": false,
+		"targets": {
+			"browsers": [
+				"last 1 version",
+				"not dead",
+				"> 1% in US",
+			]
+		}
+	}],
     "stage-2"
   ],
-  "plugins": ["transform-runtime", "syntax-dynamic-import"],
-  "comments": false,
-  "env": {
-    "test": {
-      "presets": ["env", "stage-2"],
-    }
-  }
+  "plugins": ["transform-runtime"]
 }

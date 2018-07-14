@@ -14,6 +14,7 @@
 
 <script>
 export default {
+	name: 'RTVCoreFooter',
 	computed: {
 		user_role () {
 			return 'public';
