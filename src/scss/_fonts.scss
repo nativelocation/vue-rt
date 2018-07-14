@@ -3,7 +3,7 @@
     font-style: normal;
     font-weight: 100;
     src: local('cabin'),
-         url('/src/assets/fonts/Cabin/Cabin-Regular.ttf') format('truetype')
+         url('~@fonts/Cabin/Cabin-Regular.ttf') format('truetype')
 }
 
 @font-face {
@@ -11,7 +11,7 @@
     font-style: normal;
     font-weight: 400;
     src: local('cabin'),
-         url('/src/assets/fonts/Cabin/Cabin-Bold.ttf') format('truetype')
+         url('~@fonts/Cabin/Cabin-Regular.ttf') format('truetype')
 }
 
 @font-face {
@@ -19,7 +19,7 @@
     font-style: italic;
     font-weight: 100;
     src: local('cabin'),
-         url('/src/assets/fonts/Cabin/Cabin-Italic.ttf') format('truetype')
+         url('~@fonts/Cabin/Cabin-Regular.ttf') format('truetype')
 }
 
 @font-face {
@@ -28,7 +28,7 @@
     font-weight: 400;
     src: local('Material Icons'),
          local('MaterialIcons-Regular'),
-         url('/src/assets/fonts/Material-Iconfont/MaterialIcons-Regular.ttf') format('truetype');
+         url('~@fonts/Material-Iconfont/MaterialIcons-Regular.ttf') format('truetype');
   }
   
 .material-icons {

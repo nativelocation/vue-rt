@@ -57,7 +57,7 @@
 </template>
 
 <script>
-    import home_banner from '../assets/images/home_banner.jpg'
+    import home_banner from '@images/home_banner.jpg'
     import Router from 'vue-router'
     export default {
         methods: {
@@ -95,8 +95,8 @@
 </script>
 
 <style lang="sass">
-    @import '~styles/fonts';
-    @import '~styles/variables';
+    @import '~$styles/fonts';
+    @import '~$styles/variables';
     #banner.top-banner {
         position: relative;
         max-height: 30.7rem;
@@ -124,12 +124,12 @@
                 min-width: 195px;
                 .fix-planning {
                     width: 100%;
-                    background: url('/src/assets/images/planning.png');
+                    background: url('@images/planning.png');
                     background-repeat: no-repeat;
                     background-size: 100% 100%;
                     padding-top: 100%;
                     &:hover {
-                        background: url('/src/assets/images/planning-transparent.png');
+                        background: url('@images/planning-transparent.png');
                         width: 100%;
                         background-repeat: no-repeat;
                         background-size: 100% 100%;
@@ -139,19 +139,19 @@
                 }
                 .planning {
                     width: 100%;
-                    background: url('/src/assets/images/planning-transparent.png');
+                    background: url('@images/planning-transparent.png');
                     background-repeat: no-repeat;
                     background-size: 100% 100%;
                     padding-top: 100%;
                 }
                 .fix-bidding {
                     width: 100%;
-                    background: url('/src/assets/images/bidding.png');
+                    background: url('@images/bidding.png');
                     background-repeat: no-repeat;
                     background-size: 100% 100%;
                     padding-top: 100%;
                     &:hover {
-                        background: url('/src/assets/images/bidding-transparent.png');
+                        background: url('@images/bidding-transparent.png');
                         width: 100%;
                         background-repeat: no-repeat;
                         background-size: 100% 100%;
@@ -161,19 +161,19 @@
                 }
                 .bidding {
                     width: 100%;
-                    background: url('/src/assets/images/bidding-transparent.png');
+                    background: url('@images/bidding-transparent.png');
                     background-repeat: no-repeat;
                     background-size: 100% 100%;
                     padding-top: 100%;
                 }
                 .fix-construction {
                     width: 100%;
-                    background: url('/src/assets/images/construction.png');
+                    background: url('@images/construction.png');
                     background-repeat: no-repeat;
                     background-size: 100% 100%;
                     padding-top: 100%;
                     &:hover {
-                        background: url('/src/assets/images/construction-transparent.png');
+                        background: url('@images/construction-transparent.png');
                         width: 100%;
                         background-repeat: no-repeat;
                         background-size: 100% 100%;
@@ -183,19 +183,19 @@
                 }
                 .construction {
                     width: 100%;
-                    background: url('/src/assets/images/construction-transparent.png');
+                    background: url('@images/construction-transparent.png');
                     background-repeat: no-repeat;
                     background-size: 100% 100%;
                     padding-top: 100%;
                 }
                 .fix-reports {
                     width: 100%;
-                    background: url('/src/assets/images/reports.png');
+                    background: url('@images/reports.png');
                     background-repeat: no-repeat;
                     background-size: 100% 100%;
                     padding-top: 100%;
                     &:hover {
-                        background: url('/src/assets/images/reports-transparent.png');
+                        background: url('@images/reports-transparent.png');
                         width: 100%;
                         background-repeat: no-repeat;
                         background-size: 100% 100%;
@@ -205,7 +205,7 @@
                 }
                 .reports {
                     width: 100%;
-                    background: url('/src/assets/images/reports-transparent.png');
+                    background: url('@images/reports-transparent.png');
                     background-repeat: no-repeat;
                     background-size: 100% 100%;
                     padding-top: 100%;

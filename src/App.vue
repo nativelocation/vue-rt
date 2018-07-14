@@ -1,40 +1,54 @@
 <template>
-    <div id="app">
-        <appHeader></appHeader>
-        <div role="main" class="app-content">
-			<router-view></router-view>
-		</div>
-        <appFooter></appFooter>
-    </div>
+	<div id="app">
+		<app-header :menuItems="menuItems"></app-header>
+			<router-view
+				:menuItems="menuItems">
+			</router-view>
+		<app-footer></app-footer>
+	</div>
 </template>
 
-<script type="text/babel">
-    import appHeader from './components/Header.vue'
-    import appFooter from './components/Footer.vue'
-    import 'bootstrap/dist/css/bootstrap.css'
-    import 'bootstrap-vue/dist/bootstrap-vue.css'
-    import Vue from 'vue'
-    import BootstrapVue from 'bootstrap-vue'
-    Vue.use(BootstrapVue);
-    export default {
-        components: {
-            appHeader,
-            appFooter
-        }
-    }
+<script>
+import appHeader from '@/components/Header.vue';
+import appFooter from '@/components/Footer.vue';
+
+export default {
+	name: 'app',
+	data: function () {
+		return {
+			menuItems: []
+		};
+	},
+	components: {
+		appHeader,
+		appFooter
+	}
+};
 </script>
 
-<style lang="sass">
-    @import '~styles/variables';
-    @import '../node_modules/bootstrap/scss/bootstrap.scss';
-    html, body, #app {
-        height: 100%;
-    }
-    #app {
-        .app-content {
-            min-height: calc( 100% - 72px );
-            margin-bottom: -48px;
-            padding-bottom: 48px;
-        }
-    }
+<style>
+#loader {
+	margin: 1em auto;
+	display: block;
+}
+.alert-container {
+	position: fixed;
+	z-index: 9999999999999999999;
+}
+.alert-container:empty {
+	display: none;
+}
+.message-panel {
+	display: block;
+	height: 200px;
+	position: relative;
+	background: #555;
+	overflow-y: scroll;
+}
+.message-panel.hidden {
+	display: none;
+}
+.message-panel pre {
+	color: #fff;
+}
 </style>
