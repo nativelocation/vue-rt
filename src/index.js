@@ -8,8 +8,8 @@ import router from './router';
 import { sync } from 'vuex-router-sync';
 import store from '@/store';
 import Utils from '@/plugins/Utils.js';
-import BootstrapVue from 'bootstrap-vue';
 import RTVCoreComponentProxy from '@/components/core/ComponentProxy.js';
+import BootstrapVue from 'bootstrap-vue';
 import Icon from 'vue-awesome/components/Icon';
 
 // icons

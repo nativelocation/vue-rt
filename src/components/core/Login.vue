@@ -25,15 +25,11 @@
 <script>
 export default {
 	name: 'RTVCoreLogin',
-	created: function () {
-		this.getCSRF();
-	},
 	data: function () {
 		return {
 			showLogin: true,
 			email: null,
-			pw: null,
-			csrf: null
+			pw: null
 		};
 	},
 	props: {
@@ -44,7 +40,7 @@ export default {
 	},
 	methods: {
 		async getCSRF () {
-			this.csrf = (await this.$fetchJSON('/api/csrfp')).data.token;
+			return this.$fetchJSON('/api/csrfp');
 		},
 		submitLogin (event) {
 			if (event.keyCode === 13) {
@@ -53,12 +49,13 @@ export default {
 			}
 		},
 		async postLogin () {
+			const csrf = (await this.getCSRF()).data.token;
 			// output message when messaging system is worked out
-			if (this.csrf === null) return;
+			if (csrf === null) return;
 			const json = {
 				email: this.email,
 				password: this.pw,
-				csrfp: this.csrf
+				csrfp: csrf
 			};
 			this.$store.commit('setLoading', true);
 			await this.$fetchJSON('/api/auth/login', 'POST', json);

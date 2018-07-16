@@ -11,11 +11,15 @@ export default new Vuex.Store({
 	actions,
 	getters,
 	state: {
-		loading: true
+		loading: true,
+		uniqueId: 1
 	},
 	mutations: {
 		setLoading (state, loading) {
 			state.loading = loading;
+		},
+		incrementUniqueId (state) {
+			++state.uniqueId;
 		}
 	},
 	strict: debug

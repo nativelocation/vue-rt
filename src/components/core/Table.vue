@@ -40,14 +40,13 @@ export default {
 			totalRecords: null,
 			tableFields: {},
 			items: [],
-			databaseFields: null,
 			showForm: false,
 			...this.requestData
 		};
 	},
 	computed: {
 		formattedPath: function () {
-			const formatted = this.checkForUrlParams(this.path);
+			const formatted = this.replaceUrlParams(this.path);
 			// drop the var at the end
 			this.path = this.path.replace(/\/{url\..*}/, '');
 			return formatted;
@@ -68,11 +67,11 @@ export default {
 			for (let prop in body.where) {
 				if (body.where.hasOwnProperty(prop)) {
 					if (typeof body.where[prop] === 'string') {
-						body.where[prop] = this.checkForUrlParams(this.body.where[prop]);
+						body.where[prop] = this.replaceUrlParams(this.body.where[prop]);
 					} else if (Array.isArray(body.where[prop])) {
 						body.where[prop].map((ele) => {
 							if (typeof body.where[prop] === 'string') {
-								return this.checkForUrlParams(this.body.where[prop]);
+								return this.replaceUrlParams(this.body.where[prop]);
 							}
 							return ele;
 						});
@@ -90,19 +89,16 @@ export default {
 		}
 		const dataPromise = this.$fetchJSON(...params);
 
-		this.databaseFields = (await optionsPromise).definitions.fields;
-		for (let prop in this.databaseFields) {
-			if (this.databaseFields.hasOwnProperty(prop)) {
-				// don't bother adding column if not selecting it
-				if (typeof this.formattedBody !== 'undefined' &&
-					typeof this.formattedBody.attributes !== 'undefined' &&
-					!this.formattedBody.attributes.includes(prop)) continue;
-				this.tableFields[prop] = {
-					label: this.databaseFields[prop].label,
-					key: prop
-				};
-			}
+		const optionsResponse = await optionsPromise;
+		const databaseFields = this.$parseSchemaObject(optionsResponse.get.returns, optionsResponse).data.items;
+
+		let attributes = null;
+		if (this.$isDefined(this.formattedBody) &&
+			this.$isDefined(this.formattedBody.attributes)) {
+			attributes = this.formattedBody.attributes;
 		}
+		this.tableFields = this.createTableFields(databaseFields, attributes);
+
 		const resp = await dataPromise;
 		if (!Array.isArray(resp.data)) resp.data = [resp.data];
 		this.items = resp.data;
@@ -149,7 +145,29 @@ export default {
 		}
 	},
 	methods: {
-		checkForUrlParams (str) {
+		createTableFields (fields, attributes = null) {
+			const tableFields = {};
+			for (let prop in fields) {
+				if (fields.hasOwnProperty(prop)) {
+					// don't bother adding column if not selecting it
+					if (attributes !== null && !attributes.includes(prop)) continue;
+					if (this.$isDefined(fields[prop]['#dataurl'])) {
+						this.$fetchJSON(fields[prop]['#dataurl'].href.replace(/\/{.*}/, ''), 'OPTIONS').then((resp) => {
+							console.log(resp);
+						}).catch((err) => {
+							console.error(err);
+						});
+						continue;
+					}
+					tableFields[prop] = {
+						label: fields[prop].label,
+						key: prop
+					};
+				}
+			}
+			return tableFields;
+		},
+		replaceUrlParams (str) {
 			const match = str.match(/.*{url\.(.*)}.*/);
 			if (match !== null) {
 				return str.replace('{url.' + match[1] + '}', this.$store.state.route.query[match[1]]);

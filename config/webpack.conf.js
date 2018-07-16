@@ -182,7 +182,10 @@ module.exports = (env, argv) => {
 		}
 
 		webpackConfig.watch = true;
-		webpackConfig.watchOptions = { ignored: /node_modules/ };
+		webpackConfig.watchOptions = {
+			ignored: /node_modules/,
+			poll: true
+		};
 		webpackConfig.plugins.push(
 			new FriendlyErrorsPlugin()
 		);

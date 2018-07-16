@@ -1,36 +1,43 @@
 <template>
 <b-container fluid>
-	<b-form-row :key="input.key" v-for="input in inputs">
-		<b-col md="1">
-			<label> {{ input.label }}: </label>
+	<b-form-row v-for="componentOption in componentOptions" :key="componentOption.label" @input="test">
+		<b-col cols="1">
+			<label>{{componentOption.label}}:</label>
 		</b-col>
-		<b-col md="*">
-			<b-form-input :type="inputTypeLookup(input.type)" @input="addToObject($event, input)"></b-form-input>
+		<b-col cols="*">
+			<OptionsTranslator :config="componentOption"/>
 		</b-col>
-	</b-form-row>
-	<b-form-row>
-		<b-btn class="btn-success" @click="submitForm">Save</b-btn>
-		<b-link class="btn btn-secondary btn-sm ml-3" :to="backLink">Back</b-link>
 	</b-form-row>
 </b-container>
 </template>
 <script>
+import OptionsTranslator from '@/components/core/OptionsTranslator';
 export default {
 	name: 'RTVCoreForm',
+	components: {
+		OptionsTranslator
+	},
 	data: function () {
 		return {
 			apiPath: null,
 			inputs: [],
 			baseObject: {},
 			saveObject: {},
-			schema: null
+			schema: null,
+			componentOptions: []
 		};
 	},
 	created: async function () {
 		this.apiPath = this.$store.state.route.path.replace('form', 'api');
 		this.schema = await this.$fetchJSON(this.apiPath, 'OPTIONS');
-		if (typeof this.schema.post !== 'undefined') this.parseSchema(this.$copyObject(this.schema.post.expects));
-		else if (typeof this.schema.put !== 'undefined') this.parseSchema(this.$copyObject(this.schema.put.expects));
+		let parsedObject = null;
+		if (this.$isDefined(this.schema.post)) {
+			parsedObject = this.$parseSchemaObject(this.$copyObject(this.schema.post.expects), this.schema);
+		} else if (this.$isDefined(this.schema.put)) {
+			parsedObject = this.$parseSchemaObject(this.$copyObject(this.schema.put.expects), this.schema);
+		}
+		if (parsedObject !== null) this.componentOptions = this.parseOptions(parsedObject);
+		this.saveObject = this.$copyObject(this.baseObject);
 	},
 	props: {
 		backLink: {
@@ -39,62 +46,21 @@ export default {
 		}
 	},
 	methods: {
-		parseSchema (options, parent = '') {
-			for (let prop in options.properties) {
-				if (options.properties.hasOwnProperty(prop) && prop === '$ref') {
-					options.properties = this.resolveReference(options.properties);
-				}
-			}
-			for (let prop in options.properties) {
-				if (options.properties.hasOwnProperty(prop)) {
-					if (options.properties[prop].hasOwnProperty('properties')) {
-						this.baseObject[prop] = {};
-						this.parseSchema(options.properties[prop], prop);
-						continue;
-					}
-					let key = prop;
-					if (parent !== '') {
-						key = parent + '.' + prop;
-						this.baseObject[parent][prop] = null;
-					} else {
-						this.baseObject[prop] = null;
-					}
-					this.inputs.push({key: key, ...options.properties[prop]});
-				}
-			}
-			this.saveObject = this.$copyObject(this.baseObject);
+		test (val) {
+			console.log(val);
 		},
-		resolveReference (obj) {
-			const keys = obj.$ref.split('/');
-			keys.forEach((key) => {
-				if (key === '#') {
-					obj = this.schema;
+		parseOptions (options) {
+			let components = [];
+			for (let prop in options) {
+				// checking if sub property is an object or literal
+				if (prop !== 'required' && (!this.$isDefined(options[prop].type) || options[prop].type === 'object')) {
+					components = components.concat(this.parseOptions(options[prop]));
+				} else if (prop === 'required') {
 				} else {
-					obj = obj[key];
-				}
-			});
-			return obj;
-		},
-		addToObject (value, opts) {
-			const keys = opts.key.split('.');
-			let obj = this.saveObject;
-			for (let i = 0; i < keys.length; ++i) {
-				if (i === keys.length - 1) {
-					obj[keys[i]] = opts.type === 'integer' ? Number(value) : value;
-				} else {
-					obj = obj[keys[i]];
+					components.push(options[prop]);
 				}
 			}
-		},
-		inputTypeLookup (dbType) {
-			switch (dbType) {
-				case 'integer':
-					return 'number';
-				case 'string':
-					return 'text';
-				default:
-					return '';
-			}
+			return components;
 		},
 		submitForm () {
 			const json = this.$filterUnchangedData(this.saveObject, this.baseObject);
