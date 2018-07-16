@@ -4,10 +4,10 @@
 		<div>
 			<icon v-if="iconName !== null" :name="iconName" class="icon" exact/>
 		</div>
-		<div class="font-30">
-			{{ label }}
-		</div>
 	</b-link>
+	<div class="font-30">
+		{{ label }}
+	</div>
 </div>
 </template>
 <script>

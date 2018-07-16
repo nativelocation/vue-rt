@@ -13,7 +13,7 @@ import RTVCoreComponentProxy from '@/components/core/ComponentProxy.js';
 import Icon from 'vue-awesome/components/Icon';
 
 // icons
-// probably want to build this into my dynamic loading in component-proxy
+// probably want to build this into dynamic loading
 import 'vue-awesome/icons';
 
 // styles
