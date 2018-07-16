@@ -1,10 +1,16 @@
 {
-	"presets": [
-		"es2015",
-		"stage-2"
-	],
-	"plugins": [
-		"transform-function-bind",
-		"transform-runtime"
-	]
+  "presets": [
+    ["env", {
+		"modules": false,
+		"targets": {
+			"browsers": [
+				"last 1 version",
+				"not dead",
+				"> 1% in US",
+			]
+		}
+	}],
+    "stage-2"
+  ],
+  "plugins": ["transform-runtime"]
 }

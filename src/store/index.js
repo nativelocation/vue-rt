@@ -1,16 +1,26 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
-import createLogger from 'vuex/dist/logger'
+import Vue from 'vue';
+import Vuex from 'vuex';
+import * as actions from './actions';
+import * as getters from './getters';
 
-import login from './login/index'
+Vue.use(Vuex);
 
-Vue.use(Vuex)
-Vue.config.debug = true
+const debug = process.env.NODE_ENV !== 'production';
 
 export default new Vuex.Store({
-	modules: {
-		login
+	actions,
+	getters,
+	state: {
+		loading: true,
+		uniqueId: 1
 	},
-	strict: false,
-	middlewares: [createLogger()]
-})
+	mutations: {
+		setLoading (state, loading) {
+			state.loading = loading;
+		},
+		incrementUniqueId (state) {
+			++state.uniqueId;
+		}
+	},
+	strict: debug
+});

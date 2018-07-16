@@ -1,45 +1,53 @@
 <template>
-    <div id="app">
-        <div
-            role="main"
-            class="app-content"
-            :class="$route.name === 'dashboard' ? 'app-content-bg' : ''"
-        >
-			<router-view></router-view>
+	<div id="app">
+		<RTVCoreHeader :menuItems="menuItems"/>
+        <div class="app-content">
+			<router-view
+				v-show="!$store.state.loading"
+				:menuItems="menuItems"/>
+			<icon
+				id="loader"
+				name="spinner"
+				:spin="true"
+				scale="4"
+				v-show="$store.state.loading"/>
 		</div>
-        <appFooter></appFooter>
-    </div>
+		<RTVCoreFooter/>
+	</div>
 </template>
 
-<script type="text/babel">
-    import appFooter from './components/Footer.vue'
-    import 'bootstrap/dist/css/bootstrap.css'
-    import 'bootstrap-vue/dist/bootstrap-vue.css'
-    import Vue from 'vue'
-    import BootstrapVue from 'bootstrap-vue'
-    Vue.use(BootstrapVue);
-    export default {
-        components: {
-            appFooter
-        }
-    }
-</script>
+<script>
+import RTVCoreHeader from '@/components/core/Header';
+import RTVCoreFooter from '@/components/core/Footer';
 
+export default {
+	name: 'app',
+	data: function () {
+		return {
+			menuItems: []
+		};
+	},
+	components: {
+		RTVCoreHeader,
+		RTVCoreFooter
+	}
+};
+</script>
 <style lang="sass">
-    @import '~styles/fonts';
-    @import '~styles/variables';
-    @import '../node_modules/bootstrap/scss/bootstrap.scss';
-    html, body, #app {
-        height: 100%;
-    }
-    #app {
-        .app-content {
-            min-height: 100%;
-            margin-bottom: -48px;
-            padding-bottom: 48px;
-        }
-        .app-content-bg {
-            background: $gray-200;
-        }
-    }
+@import '~$styles/variables';
+@import '../node_modules/bootstrap/scss/bootstrap.scss';
+html, body, #app {
+	height: 100%;
+}
+#app {
+	.app-content {
+		min-height: calc( 100% - 72px );
+		margin-bottom: -48px;
+		padding-bottom: 48px;
+	}
+}
+#loader {
+	margin: 1em auto;
+	display: block;
+}
 </style>
