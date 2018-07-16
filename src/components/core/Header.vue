@@ -32,7 +32,7 @@
 							v-for="(item, index) in menuItems"
 							:key="item.label">
 							<div class="menu-title d-flex align-items-center">
-								<b-nav-item v-if="typeof item.href !== 'undefined'" :to="'/' + item.href">
+								<b-nav-item v-if="typeof item.href !== 'undefined'" :to="item.href">
 									{{ item.label }}
 								</b-nav-item>
 								<b-nav-item-dropdown

@@ -1,9 +1,16 @@
 <template>
 	<div id="app">
 		<RTVCoreHeader :menuItems="menuItems"/>
-        <div role="main" class="app-content">
+        <div class="app-content">
 			<router-view
+				v-show="!$store.state.loading"
 				:menuItems="menuItems"/>
+			<icon
+				id="loader"
+				name="spinner"
+				:spin="true"
+				scale="4"
+				v-show="$store.state.loading"/>
 		</div>
 		<RTVCoreFooter/>
 	</div>
@@ -38,5 +45,9 @@ html, body, #app {
 		margin-bottom: -48px;
 		padding-bottom: 48px;
 	}
+}
+#loader {
+	margin: 1em auto;
+	display: block;
 }
 </style>

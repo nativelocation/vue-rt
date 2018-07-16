@@ -10,5 +10,13 @@ const debug = process.env.NODE_ENV !== 'production';
 export default new Vuex.Store({
 	actions,
 	getters,
+	state: {
+		loading: true
+	},
+	mutations: {
+		setLoading (state, loading) {
+			state.loading = loading;
+		}
+	},
 	strict: debug
 });

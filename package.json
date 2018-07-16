@@ -73,6 +73,7 @@
     "not ie <= 8"
   ],
   "dependencies": {
+    "ajv": "^6.5.1",
     "browserslist": "^3.2.8",
     "browserslist-cli": "^1.0.9",
     "npm": "^6.0.1"

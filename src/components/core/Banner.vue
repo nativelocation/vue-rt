@@ -13,11 +13,6 @@
 <script>
 export default {
 	name: 'RTVCoreBanner',
-	created: function () {
-	},
-	mounted: function () {
-		console.log(this.$route);
-	},
 	props: {
 		items: {
 			type: Array,

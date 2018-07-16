@@ -7,10 +7,12 @@ import App from './App';
 import router from './router';
 import { sync } from 'vuex-router-sync';
 import store from '@/store';
-import { fetchJSON, copyObject } from '@/utils.js';
+import { fetchJSON, copyObject, filterUnchangedData } from '@/utils.js';
 import BootstrapVue from 'bootstrap-vue';
 import RTVCoreComponentProxy from '@/components/core/ComponentProxy.js';
 import Icon from 'vue-awesome/components/Icon';
+import AJV from 'ajv';
+import DraftSix from 'ajv/lib/refs/json-schema-draft-06.json';
 
 // icons
 // probably want to build this into dynamic loading
@@ -40,6 +42,9 @@ sync(store, router);
 // register widely used util functions
 Vue.prototype.$copyObject = copyObject;
 Vue.prototype.$fetchJSON = fetchJSON;
+Vue.prototype.$filterUnchangedData = filterUnchangedData;
+Vue.prototype.$ajv = new AJV();
+Vue.prototype.$ajv.addMetaSchema(DraftSix);
 
 /* eslint-disable no-new */
 new Vue({

@@ -22,7 +22,7 @@ module.exports = {
 	},
 	dev: {
 		port: 8080,
-		autoOpenBrowser: true,
+		autoOpenBrowser: false,
 		index: path.resolve(__dirname, '../build/index.html'),
 		assetsRoot: path.resolve(__dirname, '../build'),
 		assetsSubDirectory: 'static',

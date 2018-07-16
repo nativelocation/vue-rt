@@ -2,7 +2,7 @@
 <div class="link-wrapper">
 	<b-link :to="'/' + href">
 		<div>
-			<icon v-if="iconName !== null" :name="iconName" class="icon" exact/>
+			<icon v-if="iconName !== null" :name="iconName" class="icon"/>
 		</div>
 	</b-link>
 	<div class="font-30">

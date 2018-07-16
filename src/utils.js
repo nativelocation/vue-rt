@@ -1,24 +1,28 @@
 import moment from 'moment';
 async function fetchJSON (url, method = 'GET', json = '', stringify = true) {
-	if (process.env.NODE_ENV === 'development') {
+	/* if (process.env.NODE_ENV === 'development') {
 		let origin = window.location.protocol + '//';
 		// hard coding backend API port
 		// maybe add port to process.env with webpack instead?
 		origin += window.location.hostname + ':8000';
 		url = origin + url;
-	}
+	} */
 	const options = {
 		method: method,
-		mode: 'cors',
 		credentials: 'include'
 	};
 	if (method !== 'GET') {
 		let body = json;
 		if (stringify) body = JSON.stringify(json);
 		options.body = body;
+		options.headers = {
+			Accept: 'application/json',
+			'Content-Type': 'application/json'
+		};
 	}
 	const response = await fetch(url, options);
 	if (!response.ok) {
+		console.log(response);
 		var err = new Error(response.statusText);
 		err.code = response.status;
 		err.url = response.url;
@@ -33,45 +37,7 @@ async function fetchJSON (url, method = 'GET', json = '', stringify = true) {
 		throw err;
 	}
 }
-// Limit should be at most 6, but if dataset is known do half of the data set rounded up only if data set is sub 12 requests.
-function parallelLimit (promiseFactories, limit) {
-	let result = [];
-	let cnt = 0;
 
-	function chain (promiseFactories) {
-		if (!promiseFactories.length) return;
-		let i = cnt++; // preserve order in result
-		return promiseFactories.shift()().then((res) => {
-			result[i] = res; // save result
-			return chain(promiseFactories); // append next promise
-		});
-	}
-
-	let arrChains = [];
-	while (limit-- > 0 && promiseFactories.length > 0) {
-		// create `limit` chains which run in parallel
-		arrChains.push(chain(promiseFactories));
-	}
-	// return when all arrChains are finished
-	return Promise.all(arrChains).then(() => result);
-}
-
-function optionsRequest (url) {
-	fetchJSON(url, 'OPTIONS').then((rsp) => {
-		console.log(rsp.body);
-	});
-	return 'Waiting on Promise';
-}
-function groupChildArrayByParentId (childArray, parentArray, parentProp, childProp = parentProp) {
-	return parentArray.reduce((accum, ele) => {
-		accum.push(childArray.filter((child) => {
-			return ele[parentProp] === child[childProp];
-		}));
-		return accum;
-	}, []);
-}
-window.RTV = window.RTV || {};
-window.RTV.optionsRequest = optionsRequest;
 function handleError (err, component) {
 	const error = { timestamp: moment().format('h:mm:ss a') };
 	if (err.code === 401) {
@@ -103,38 +69,22 @@ function handleError (err, component) {
 	error.dismissible = true;
 	return error;
 }
-function buildOptions (array, id, options, value = 'name', sort = true) {
-	array.forEach((obj) => {
-		let name = obj[value];
-		options.push({text: name, value: obj[id], sortable: true});
-	});
-	if (sort === true) sortOptionsArray(options);
-}
 function filterUnchangedData (newObj, oldObj) {
 	const json = {};
 	for (let prop in newObj) {
 		if (newObj.hasOwnProperty(prop)) {
+			if (newObj[prop] !== null && typeof newObj[prop] === 'object') {
+				const obj = filterUnchangedData(newObj[prop], oldObj[prop]);
+				if (Object.keys(obj).length > 0) json[prop] = obj;
+				continue;
+			}
+			console.log(prop);
 			if (newObj[prop] !== oldObj[prop]) {
 				json[prop] = newObj[prop];
 			}
 		}
 	}
 	return json;
-}
-function sortOptionsArray (arr) {
-	arr.sort(function (a, b) {
-		if (a.sortable !== true || b.sortable !== true) return 0;
-		var nameA = a.text.toUpperCase(); // ignore upper and lowercase
-		var nameB = b.text.toUpperCase(); // ignore upper and lowercase
-		if (nameA < nameB) {
-			return -1;
-		}
-		if (nameA > nameB) {
-			return 1;
-		}
-		// names must be equal
-		return 0;
-	});
 }
 function round (n, digits) {
 	var negative = false;
@@ -154,4 +104,4 @@ function round (n, digits) {
 	return n;
 }
 const copyObject = (obj) => JSON.parse(JSON.stringify(obj));
-export { fetchJSON, handleError, buildOptions, parallelLimit, groupChildArrayByParentId, filterUnchangedData, round, copyObject };
+export { fetchJSON, handleError, filterUnchangedData, round, copyObject };
