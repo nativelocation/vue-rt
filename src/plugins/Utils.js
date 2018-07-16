@@ -1,4 +1,6 @@
-import moment from 'moment';
+import AJV from 'ajv';
+import DraftSix from 'ajv/lib/refs/json-schema-draft-06.json';
+
 async function fetchJSON (url, method = 'GET', json = '', stringify = true) {
 	/* if (process.env.NODE_ENV === 'development') {
 		let origin = window.location.protocol + '//';
@@ -38,37 +40,6 @@ async function fetchJSON (url, method = 'GET', json = '', stringify = true) {
 	}
 }
 
-function handleError (err, component) {
-	const error = { timestamp: moment().format('h:mm:ss a') };
-	if (err.code === 401) {
-		component.$emit('login');
-		error.id = component.alertCounter;
-		error.body = 'Need to Login to Access this Page';
-		error.variant = 'danger';
-		error.header = 'Redirecting To Login page';
-		error.dismissible = true;
-		return error;
-	}
-	error.header = 'Whoops: Something Broke';
-	if (err.hasOwnProperty('url')) {
-		if (err.hasOwnProperty('code')) {
-			error.body = '<b>Path:</b> ' + err.url + '<br><b>Status:</b> ' + err.code + (err.body ? ' ' + err.body : '');
-		} else if (err.hasOwnProperty('message')) {
-			error.body = '<b>Path:</b> ' + err.url + '<br><b>Message:</b> ' + err.body;
-		} else {
-			error.body = '<b>Path:</b> ' + err.url + '<br><b>Status: 500</b>';
-		}
-	} else {
-		if (typeof err.body !== 'undefined') {
-			error.body = '<b>Error:</b> ' + err.body;
-		} else {
-			error.body = '<b>Error:</b> ' + err.message;
-		}
-	}
-	error.variant = 'danger';
-	error.dismissible = true;
-	return error;
-}
 function filterUnchangedData (newObj, oldObj) {
 	const json = {};
 	for (let prop in newObj) {
@@ -104,4 +75,14 @@ function round (n, digits) {
 	return n;
 }
 const copyObject = (obj) => JSON.parse(JSON.stringify(obj));
-export { fetchJSON, handleError, filterUnchangedData, round, copyObject };
+
+export default {
+	install: (Vue, options) => {
+		Vue.prototype.$copyObject = copyObject;
+		Vue.prototype.$round = round;
+		Vue.prototype.$fetchJSON = fetchJSON;
+		Vue.prototype.$filterUnchangedData = filterUnchangedData;
+		Vue.prototype.$ajv = new AJV();
+		Vue.prototype.$ajv.addMetaSchema(DraftSix);
+	}
+};
