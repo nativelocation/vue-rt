@@ -2,7 +2,7 @@
 <div id="banner" class="top-banner justify-content-around align-items-center d-flex">
 	<div class="w-100 d-flex justify-content-around flex-wrap">
 		<template v-for="component in components">
-			<keep-alive>
+			<keep-alive :key="component.name">
 				<RTVCoreComponentProxy :name="component.name" :data="$copyObject(component.data)"/>
 			</keep-alive>
 		</template>

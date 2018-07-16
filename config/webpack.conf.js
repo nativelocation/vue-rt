@@ -123,8 +123,8 @@ module.exports = (env, argv) => {
 	const htmlPlugin = new HtmlWebpackPlugin({
 		filename: config.build.index,
 		template: 'config/templates/index.html',
-		inject: true,
-	})
+		inject: true
+	});
 	if (argv.mode === "production") {
 		webpackConfig.output = {
 			publicPath: config.build.assetsPublicPath,

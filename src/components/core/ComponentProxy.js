@@ -31,6 +31,11 @@ export default {
 						   webpackMode: "lazy-once" */
 						`@/components/${component}`
 					),
+					modal: {
+						import: component => import(
+							`@/components/modal/${component}`
+						)
+					},
 					core: {
 						import: component => import(
 							/* webpackChunkName: "core",
@@ -91,7 +96,6 @@ export default {
 			}
 
 			this.currentImport = imp;
-
 			return this.importComponent;
 		},
 		// for some reason can't use anonymous function

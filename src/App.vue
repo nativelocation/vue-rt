@@ -4,7 +4,8 @@
         <div class="app-content">
 			<router-view
 				v-show="!$store.state.loading"
-				:menuItems="menuItems"/>
+				:menuItems="menuItems"
+				:updateMenu="updateMenu"/>
 			<icon
 				id="loader"
 				name="spinner"
@@ -24,8 +25,13 @@ export default {
 	name: 'app',
 	data: function () {
 		return {
-			menuItems: []
+			menuItems: {}
 		};
+	},
+	methods: {
+		updateMenu (menu) {
+			this.menuItems = menu;
+		}
 	},
 	components: {
 		RTVCoreHeader,
@@ -34,6 +40,7 @@ export default {
 };
 </script>
 <style lang="sass">
+@import '~$styles/fonts';
 @import '~$styles/variables';
 @import '../node_modules/bootstrap/scss/bootstrap.scss';
 html, body, #app {

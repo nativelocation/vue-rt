@@ -5,10 +5,10 @@
 	</header>
 	<main class="main-content">
 		<template v-for="component in components">
-			<keep-alive>
+			<keep-alive :key="component.name">
 				<RTVCoreComponentProxy
 					:name="component.name"
-					 :data="$copyObject(component.data)"/>
+					:data="$copyObject(component.data)"/>
 			</keep-alive>
 		</template>
 	</main>
@@ -29,7 +29,7 @@ export default {
 	}
 };
 </script>
-<style>
+<style lang="sass">
 @import '~$styles/variables';
 .main-header {
 	background: $gray-200;
