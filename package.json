@@ -9,6 +9,7 @@
     "start": "node config/dev-server.js"
   },
   "devDependencies": {
+    "ajv": "^6.5.1",
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.3",
     "babel-loader": "^7.1.4",
@@ -73,7 +74,6 @@
     "not ie <= 8"
   ],
   "dependencies": {
-    "ajv": "^6.5.1",
     "browserslist": "^3.2.8",
     "browserslist-cli": "^1.0.9",
     "npm": "^6.0.1"

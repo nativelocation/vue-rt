@@ -1,11 +1,11 @@
 <template>
 <div>
-	<template v-for="widget in widgets">
+	<template v-for="component in components">
 		<keep-alive>
 			<RTVCoreComponentProxy
-				:name="widget.component"
-				:key="widget.component"
-				:data="$copyObject(widget.data)"/>
+				:name="component.name"
+				:key="component.name"
+				:data="$copyObject(component.data)"/>
 		</keep-alive>
 	</template>
 </div>
@@ -24,7 +24,7 @@ export default {
 	},
 	data: function () {
 		return {
-			widgets: [],
+			components: [],
 			currentPath: ''
 		};
 	},
@@ -34,8 +34,8 @@ export default {
 			if (typeof oldPath === 'undefined') oldPath = '/';
 			this.$store.commit('setLoading', true);
 			if (path === '/login') {
-				this.widgets.push({
-					component: 'rtv-core-login',
+				this.components.push({
+					name: 'rtv-core-login',
 					data: {
 						redirect: oldPath
 					}
@@ -44,16 +44,16 @@ export default {
 				return;
 			}
 			this.menuItems.splice(0);
-			this.widgets.splice(0);
+			this.components.splice(0);
 			if (path === '/') {
 				const resp = await this.$fetchJSON('/api/view/_landing_');
 				resp.data.menu.forEach((ele) => {
 					this.menuItems.push(ele);
 				});
-				this.widgets = resp.data.widget;
+				this.components = resp.data.components;
 			} else if (path.includes('/form/')) {
-				this.widgets.push({
-					component: 'rtv-core-form',
+				this.components.push({
+					name: 'rtv-core-form',
 					data: {
 						props: {
 							backLink: oldPath
@@ -67,7 +67,7 @@ export default {
 						this.menuItems.push(ele);
 					});
 				}
-				this.widgets = resp.data.widget;
+				this.components = resp.data.components;
 			}
 			this.$store.commit('setLoading', false);
 		}

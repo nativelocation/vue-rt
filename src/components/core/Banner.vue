@@ -1,9 +1,9 @@
 <template>
 <div id="banner" class="top-banner justify-content-around align-items-center d-flex">
 	<div class="w-100 d-flex justify-content-around flex-wrap">
-		<template v-for="item in items">
+		<template v-for="component in components">
 			<keep-alive>
-				<RTVCoreComponentProxy :name="item.component" :data="$copyObject(item.data)"/>
+				<RTVCoreComponentProxy :name="component.name" :data="$copyObject(component.data)"/>
 			</keep-alive>
 		</template>
 	</div>
@@ -14,7 +14,7 @@
 export default {
 	name: 'RTVCoreBanner',
 	props: {
-		items: {
+		components: {
 			type: Array,
 			default: () => []
 		}

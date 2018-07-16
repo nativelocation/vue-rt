@@ -4,11 +4,11 @@
 		{{ header }}
 	</header>
 	<main class="main-content">
-		<template v-for="content in items">
+		<template v-for="component in components">
 			<keep-alive>
 				<RTVCoreComponentProxy
-					:name="content.component"
-					 :data="$copyObject(content.data)"/>
+					:name="component.name"
+					 :data="$copyObject(component.data)"/>
 			</keep-alive>
 		</template>
 	</main>
@@ -22,7 +22,7 @@ export default {
 			Type: String,
 			default: null
 		},
-		items: {
+		components: {
 			type: Array,
 			default: () => []
 		}
