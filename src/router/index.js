@@ -6,7 +6,7 @@ Vue.use(Router);
 export default new Router({
 	routes: [
 		{
-			path: '/:url*/:suburl1',
+			path: '/:url*',
 			name: 'home',
 			component: RTVCoreView
 		}
