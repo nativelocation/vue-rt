@@ -85,8 +85,7 @@ export default {
 			return saveObject;
 		},
 		submitForm () {
-			const json = this.$filterUnchangedData(this.$store.state.formSaveObject, this.$store.state.formBaseObject);
-			console.log(this.parsedObject);
+			const json = this.$store.getters.changedFormData();
 			if (this.$ajv.validate(this.parsedObject, json)) {
 				this.$fetchJSON(this.apiPath, 'POST', json);
 			}

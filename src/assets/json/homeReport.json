@@ -47,7 +47,7 @@
 								"data": {
 									"props": {
 										"label": "Projects in Construction",
-										"href": "/oneoffice/contract/constructionp",
+										"href": "/oneoffice/contract/construction",
 										"iconName": "chess-pawn",
 										"textStyles": {
 											"color": "white"
@@ -61,7 +61,7 @@
 								"data": {
 									"props": {
 										"label": "Reports",
-										"href": "/oneoffice/reports",
+										"href": "/oneoffice/contract/reports",
 										"iconName": "chess-bishop",
 										"textStyles": {
 											"color": "white"
@@ -78,11 +78,22 @@
 				"name": "rtv-core-main",
 				"data": {
 					"props": {
-						"header": "Planning Projects",
+						"header": "Report",
 						"components": [
 							{
-								"name": "rtv-core-table",
-								"data": {}
+								"name": "rtv-core-table-table",
+								"data": {
+									"props": {
+										"header": "Report",
+										"href": "/oneoffice/contract/report?id={id}",
+										"addLink": "/api/table/oneoffice/report",
+										"editLink": "/api/table/oneoffice/report",
+										"requestData": {
+											"method": "GET",
+											"path": "/api/table/oneoffice/report"
+										}
+									}
+								}
 							}
 						]
 					}

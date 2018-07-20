@@ -41,10 +41,18 @@ export default {
 						),
 						modal: {
 							import: component => import(
-							/* webpackChunkName: "modal",
-							   webpackInclude: /\.vue$/,
-							   webpackMode: "lazy-once" */
+								/* webpackChunkName: "modal",
+								webpackInclude: /\.vue$/,
+								webpackMode: "lazy-once" */
 								`@/components/core/modal/${component}`
+							)
+						},
+						table: {
+							import: component => import(
+								/* webpackChunkName: "modal",
+								webpackInclude: /\.vue$/,
+								webpackMode: "lazy-once" */
+								`@/components/core/table/${component}`
 							)
 						}
 					}

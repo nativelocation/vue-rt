@@ -1,0 +1,66 @@
+{
+    "confige": {
+        "columns": [
+            {
+                "key": "projectId",
+                "label": "Project ID",
+                "style": {
+                    "color": "blue"
+                }
+            },
+            {
+                "key": "projectNo",
+                "label": "Project No.",
+                "style": {
+                    "color": "black"
+                }
+            },
+            {
+                "key": "description",
+                "label": "Description",
+                "style": {
+                    "color": "black"
+                }
+            },
+            {
+                "key": "location",
+                "label": "Construction Location",
+                "style": {
+                    "color": "black"
+                }
+            },
+            {
+                "key": "bidDate",
+                "label": "Anticpated Bid Date",
+                "style": {
+                    "color": "black",
+                    "text-align": "right",
+                    "padding-right": "5px"
+                }
+            }
+        ]
+    },
+    "data": [
+        {
+            "projectId":  "CP 00-000-000",
+            "projectNo":  "CP 00-000-000(subject to change)",
+            "description":  "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "location": "Street, City, State",
+            "bidDate": "MM/DD/YYYY"
+        },
+        {
+            "projectId":  "CP 00-000-000",
+            "projectNo":  "CP 00-000-000(subject to change)",
+            "description":  "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "location": "Street, City, State",
+            "bidDate": "MM/DD/YYYY"
+        },
+        {
+            "projectId":  "CP 00-000-000",
+            "projectNo":  "CP 00-000-000(subject to change)",
+            "description":  "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "location": "Street, City, State",
+            "bidDate": "MM/DD/YYYY"
+        }
+    ]
+}

@@ -1,17 +1,18 @@
 <template>
 	<div id="app">
-		<RTVCoreHeader/>
-        <div class="app-content">
-			<router-view
-				v-show="!$store.state.loading"/>
-			<icon
-				id="loader"
-				name="spinner"
-				:spin="true"
-				scale="4"
-				v-show="$store.state.loading"/>
+		<div v-show="!$store.state.loading">
+			<RTVCoreHeader/>
+			<div class="app-content">
+				<router-view/>
+			</div>
+			<RTVCoreFooter/>
 		</div>
-		<RTVCoreFooter/>
+		<icon
+			id="loader"
+			name="spinner"
+			:spin="true"
+			scale="4"
+			v-show="$store.state.loading"/>
 	</div>
 </template>
 
@@ -21,6 +22,12 @@ import RTVCoreFooter from '@/components/core/Footer';
 
 export default {
 	name: 'app',
+	created: async function () {
+		if (process.env.NODE_ENV === 'development') {
+			await this.$store.dispatch('loadTempViewJSON');
+		}
+		await this.$store.dispatch('loadResources');
+	},
 	data: function () {
 		return {
 		};

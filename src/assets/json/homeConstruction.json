@@ -1,0 +1,104 @@
+
+{
+	"data": {
+		"menu": {
+			"name": "mainmenu",
+			"role": "public"
+		},
+		"components": [
+			{
+				"name": "rtv-core-banner",
+				"data": {
+					"class": {
+						"home-banner-image": true
+					},
+					"props": {
+						"components": [
+							{
+								"name": "rtv-core-link",
+								"data": {
+									"props": {
+										"label": "Planning Projects",
+										"href": "/oneoffice/contract/planning",
+										"iconName": "chess-knight",
+										"textStyles": {
+											"color": "white"
+										}
+									},
+									"class": "category col-lg-3"
+								}
+							},
+							{
+								"name": "rtv-core-link",
+								"data": {
+									"props": {
+										"label": "Projects in Bidding",
+										"href": "/oneoffice/contract/bidding",
+										"iconName": "chess-rook",
+										"textStyles": {
+											"color": "white"
+										}
+									},
+									"class": "category col-lg-3"
+								}
+							},
+							{
+								"name": "rtv-core-link",
+								"data": {
+									"props": {
+										"label": "Projects in Construction",
+										"href": "/oneoffice/contract/construction",
+										"iconName": "chess-pawn",
+										"textStyles": {
+											"color": "white"
+										}
+									},
+									"class": "category col-lg-3"
+								}
+							},
+							{
+								"name": "rtv-core-link",
+								"data": {
+									"props": {
+										"label": "Reports",
+										"href": "/oneoffice/contract/reports",
+										"iconName": "chess-bishop",
+										"textStyles": {
+											"color": "white"
+										}
+									},
+									"class": "category col-lg-3"
+								}
+							}
+						]
+					}
+				}
+			},
+			{
+				"name": "rtv-core-main",
+				"data": {
+					"props": {
+						"header": "Projects in Construction",
+						"components": [
+							{
+								"name": "rtv-core-table-table",
+								"data": {
+									"props": {
+										"header": "Construction",
+										"href": "/oneoffice/contract/construction?id={id}",
+										"addLink": "/api/table/oneoffice/construction",
+										"editLink": "/api/table/oneoffice/construction",
+										"requestData": {
+											"method": "GET",
+											"path": "/api/table/oneoffice/construction"
+										}
+									}
+								}
+							}
+						]
+					}
+				}
+			}
+		]
+	}
+}

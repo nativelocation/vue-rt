@@ -1,5 +1,5 @@
 {
-    "name": "dashboardMenu",
+    "name": "dashboard",
     "role": "authenticated",
     "menus": [
         {

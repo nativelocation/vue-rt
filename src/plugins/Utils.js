@@ -40,22 +40,6 @@ const utils = {
 			throw err;
 		}
 	},
-	$filterUnchangedData: function (newObj, oldObj) {
-		const json = {};
-		for (let prop in newObj) {
-			if (newObj.hasOwnProperty(prop)) {
-				if (newObj[prop] !== null && typeof newObj[prop] === 'object') {
-					const obj = this.$filterUnchangedData(newObj[prop], oldObj[prop]);
-					if (Object.keys(obj).length > 0) json[prop] = obj;
-					continue;
-				}
-				if (newObj[prop] !== oldObj[prop]) {
-					json[prop] = newObj[prop];
-				}
-			}
-		}
-		return json;
-	},
 	$round: (n, digits) => {
 		var negative = false;
 		if (digits === undefined) {
@@ -138,10 +122,13 @@ const utils = {
 	},
 	$isDefined: value => typeof value !== 'undefined'
 };
+
 utils.$ajv.addMetaSchema(DraftSix);
+
 export default {
 	install: (Vue, options) => {
 		Object.assign(Vue.prototype, utils);
 	}
 };
-export const ajv = utils.$ajv;
+
+export const { $fetchJSON: fetchJSON, $ajv: ajv } = utils;

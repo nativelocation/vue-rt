@@ -1,0 +1,39 @@
+{
+	"data": {
+		"menu": {
+			"name": "dashboardMenu",
+			"role": "authenticated"
+		},
+		"components": [
+			{
+				"name": "rtv-core-tab",
+				"data": {
+					"props": {
+						"tabs": [
+							{
+								"title": "Project Items",
+								"href": "/project_items",
+								"active": false
+							},
+							{
+								"title": "Funding Sources",
+								"href": "/funding_sources",
+								"active": false
+							},
+							{
+								"title": "Funding Splits",
+								"href": "/funding_splits",
+								"active": false
+							},
+							{
+								"title": "Item Funding Setup",
+								"href": "/funding_setup",
+								"active": true
+							}
+						]
+					}
+				}
+			}
+		]
+	}
+}

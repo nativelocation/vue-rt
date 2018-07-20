@@ -2,8 +2,7 @@
 {
 	"data": {
 		"menu": {
-			"name": "mainmenu",
-			"role": "authentication"
+			"name": "home"
 		},
 		"components": [
 			{

@@ -68,9 +68,9 @@ export default {
 		inputEventHandler (value) {
 			// check if the event came from a native HTML element
 			if (typeof value.target !== 'undefined') value = value.target.value;
-			this.$store.commit({
-				type: 'setFormSaveObjectProperty',
-				property: this.config.saveObjectProperty,
+			this.$store.dispatch({
+				type: 'validateUserInput',
+				prop: this.config.saveObjectProperty,
 				value: value
 			});
 		},

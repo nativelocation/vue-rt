@@ -1,0 +1,161 @@
+{
+	"data": {
+		"menu": {
+			"name": "dashboardMenu",
+			"role": "authenticated"
+		},
+		"components": [
+			{
+				"name": "rtv-core-tab",
+				"data": {
+					"props": {
+						"tabs": [
+							{
+								"title": "Project Items",
+								"href": "/project_items",
+								"active": true
+							},
+							{
+								"title": "Funding Sources",
+								"href": "/funding_sources",
+								"active": false
+							},
+							{
+								"title": "Funding Splits",
+								"href": "/funding_splits",
+								"active": false
+							},
+							{
+								"title": "Item Funding Setup",
+								"href": "/funding_setup",
+								"active": false
+							}
+						]
+					}
+				}
+			},
+			{
+				"name": "rtv-core-table-filters",
+				"data": {
+					"style": {
+						"marginLeft": "21px",
+						"marginRight": "21px",
+						"marginTop": "8px",
+						"height": "25px",
+						"background": "#b3b3b3"
+					},
+					"props": {
+						"components": [
+							{
+								"name": "rtv-core-action",
+								"id": "projectAddItem",
+								"data": {
+									"props": {
+										"label": "Add Item",
+										"click": "addProjectItem",
+										"styles": {
+											"background": "#2d4162",
+											"width": "60px",
+											"marginRight": "20px"
+										},
+										"textStyles": {
+											"color": "white",
+											"textAlign": "center",
+											"fontSize": "12px",
+											"fontFamily": "cabin"
+										}
+									}
+								}
+							},
+							{
+								"name": "rtv-core-filter",
+								"id": "projectFilter",
+								"data": {
+									"props": {
+										"label": "Projects:",
+										"cType": "dropbox",
+										"styles": {
+											"marginRight": "60px"
+										},
+										"textStyles": {
+											"color": "black",
+											"textAlign": "center",
+											"fontSize": "12px",
+											"fontFamily": "cabin"
+										}
+									}
+								}
+							},
+							{
+								"name": "rtv-core-filter",
+								"id": "reportsFilter",
+								"data": {
+									"props": {
+										"label": "Reports:",
+										"cType": "dropbox",
+										"styles": {
+											"marginRight": "60px"
+										},
+										"textStyles": {
+											"color": "black",
+											"textAlign": "center",
+											"fontSize": "12px",
+											"fontFamily": "cabin"
+										}
+									}
+								}
+							},
+							{
+								"name": "rtv-core-filter",
+								"id": "schedulesFilter",
+								"data": {
+									"props": {
+										"label": "Schedules:",
+										"cType": "dropbox",
+										"styles": {
+											"marginRight": "60px"
+										},
+										"textStyles": {
+											"color": "black",
+											"textAlign": "center",
+											"fontSize": "12px",
+											"fontFamily": "cabin"
+										}
+									}
+								}
+							},
+							{
+								"name": "rtv-core-filter",
+								"id": "lineperPage",
+								"data": {
+									"props": {
+										"label": "# Lines per page:",
+										"cType": "text",
+										"styles": {
+											"marginRight": "60px"
+										},
+										"textStyles": {
+											"color": "black",
+											"textAlign": "center",
+											"fontSize": "12px",
+											"fontFamily": "cabin"
+										},
+										"tagStyles": {
+											"color": "black",
+											"textAlign": "left",
+											"fontSize": "12px",
+											"fontFamily": "cabin",
+											"height": "17px",
+											"marginLeft": "10px",
+											"width": "50px"
+										}
+									}
+								}
+							}
+						]
+					}
+				}
+			}
+		]
+	}
+}

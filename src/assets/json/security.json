@@ -1,8 +1,7 @@
 {
 	"data": {
 		"menu": {
-			"name": "dashboardMenu",
-			"role": "authenticated"
+			"name": "dashboard"
 		},
 		"components": [
 			{
