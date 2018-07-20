@@ -102,6 +102,7 @@
 </template>
 
 <script>
+import MainMenu from '@/components/core/modal/MainMenu';
 export default {
 	name: 'RTVCoreHeader',
 	data: function () {
@@ -125,6 +126,9 @@ export default {
 			type: Object,
 			default: {}
 		}
+	},
+	components: {
+		MainMenu
 	}
 };
 </script>

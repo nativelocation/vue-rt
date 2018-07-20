@@ -34,11 +34,11 @@
 </template>
 
 <script>
-import Organization from '@/components/modal/settings/Organization.vue';
-import Contact from '@/components/modal/settings/Contact.vue';
-import Employee from '@/components/modal/settings/Employee.vue';
-import Item from '@/components/modal/settings/Item.vue';
-import UserAccount from '@/components/modal/settings/UserAccount.vue';
+import Organization from '@/components/core/modal/settings/Organization.vue';
+import Contact from '@/components/core/modal/settings/Contact.vue';
+import Employee from '@/components/core/modal/settings/Employee.vue';
+import Item from '@/components/core/modal/settings/Item.vue';
+import UserAccount from '@/components/core/modal/settings/UserAccount.vue';
 export default {
 	data: function () {
 		return {

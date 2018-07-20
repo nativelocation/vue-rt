@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import NewContract from '@/components/modal/add/NewContract.vue';
+import NewContract from '@/components/core/modal/add/NewContract.vue';
 export default {
 	data: function () {
 		return {

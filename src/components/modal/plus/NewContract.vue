@@ -2,7 +2,7 @@
 <template>
 <div class="container-fluid h-100 p-0 m-0">
 	<ModalHeader
-		title="New Contract"
+		:title="title"
 		:handleClose="handleClose"
 		:handleHelp="handleHelp"/>
 	<div class="employee-modal-body px-4 py-2">
@@ -216,12 +216,11 @@
 
 <script>
 // import { mapState } from 'vuex';
-import ModalHeader from '@/components/modal/ModalHeader.vue';
+import ModalHeader from '@/components/core/modal/ModalHeader.vue';
 import Footer from '@/components/core/Footer.vue';
-import ModalHelp from '@/components/modal/ModalHelp.vue';
+import ModalHelp from '@/components/core/modal/ModalHelp.vue';
 
 export default {
-	name: 'RTVNewContract',
 	data: function () {
 		return {
 			employeeNumber: '',
@@ -236,6 +235,10 @@ export default {
 		};
 	},
 	props: {
+		title: {
+			type: String,
+			default: ''
+		},
 		handleClose: {
 			type: Function,
 			default: () => {}
@@ -264,6 +267,9 @@ export default {
 		}
 	},
 	computed: {
+		// ...mapState([
+		// 	'login'
+		// ]),
 		columns () {
 			// const thclass = this.login.token === 'Test Login' ? 'table-header-internal table-header-public text-center' : 'table-header-public  text-center';
 			const thclass = 'table-header-internal table-header-public text-center';

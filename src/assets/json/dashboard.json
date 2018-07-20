@@ -1,0 +1,260 @@
+{
+    "data": {
+        "menu": {
+            "name": "dashboardMenu",
+            "role": "authenticated",
+            "menus": [
+                {
+                    "type": "rtv-core-modal-add",
+                    "name": "addModal",
+                    "iconName": "add",
+                    "sub": [
+                        {
+                            "type": "rtv-core-link",
+                            "data": {
+                                "props": {
+                                    "label": "New Contract",
+                                    "href": "/oneoffice/create/**"
+                                }
+                            }
+                        },
+                        {
+                            "type": "rtv-core-link",
+                            "data": {
+                                "props": {
+                                    "label": "Ad for Bid (Long Form)",
+                                    "href": "/oneoffice/create/**"
+                                }
+                            }
+                        },
+                        {
+                            "type": "rtv-core-link",
+                            "data": {
+                                "props": {
+                                    "label": "Daily Journal",
+                                    "href": "/oneoffice/create/**"
+                                }
+                            }
+                        },
+                        {
+                            "type": "rtv-core-link",
+                            "data": {
+                                "props": {
+                                    "label": "New Contract Template",
+                                    "href": "/oneoffice/create/**"
+                                }
+                            }
+                        },
+                        {
+                            "type": "rtv-core-link",
+                            "data": {
+                                "props": {
+                                    "label": "Ad for Bid (Short)",
+                                    "href": "/oneoffice/create/**"
+                                }
+                            }
+                        },
+                        {
+                            "type": "rtv-core-link",
+                            "data": {
+                                "props": {
+                                    "label": "Transaction",
+                                    "href": "/oneoffice/create/**"
+                                }
+                            }
+                        },
+                        {
+                            "type": "rtv-core-link",
+                            "data": {
+                                "props": {
+                                    "label": "Project Items",
+                                    "href": "/oneoffice/create/**"
+                                }
+                            }
+                        },
+                        {
+                            "type": "rtv-core-link",
+                            "data": {
+                                "props": {
+                                    "label": "Contract Changes",
+                                    "href": "/oneoffice/create/**"
+                                }
+                            }
+                        },
+                        {
+                            "type": "rtv-core-link",
+                            "data": {
+                                "props": {
+                                    "label": "Material on Hand",
+                                    "href": "/oneoffice/create/**"
+                                }
+                            }
+                        },
+                        {
+                            "type": "rtv-core-link",
+                            "data": {
+                                "props": {
+                                    "label": "Funding Sources",
+                                    "href": "/oneoffice/create/**"
+                                }
+                            }
+                        },
+                        {
+                            "type": "rtv-core-link",
+                            "data": {
+                                "props": {
+                                    "label": "Consultants",
+                                    "href": "/oneoffice/create/**"
+                                }
+                            }
+                        },
+                        {
+                            "type": "rtv-core-link",
+                            "data": {
+                                "props": {
+                                    "label": "Encumbrance",
+                                    "href": "/oneoffice/create/**"
+                                }
+                            }
+                        },
+                        {
+                            "type": "rtv-core-link",
+                            "data": {
+                                "props": {
+                                    "label": "Funding Splits",
+                                    "href": "/oneoffice/create/**"
+                                }
+                            }
+                        },
+                        {
+                            "type": "rtv-core-link",
+                            "data": {
+                                "props": {
+                                    "label": "State Aid Payment Requests",
+                                    "href": "/oneoffice/create/**"
+                                }
+                            }
+                        },
+                        {
+                            "type": "rtv-core-link",
+                            "data": {
+                                "props": {
+                                    "label": "Weekly Diary",
+                                    "href": "/oneoffice/create/**"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "rtv-core-modal-search",
+                    "name": "searchModal",
+                    "iconName": "search"
+                },
+                {
+                    "type": "rtv-core-modal-settings",
+                    "name": "settingsModal",
+                    "iconName": "settings",
+                    "sub": [
+                        {
+                            "type": "rtv-core-action",
+                            "data": {
+                                "props": {
+                                    "label": "Hennepin County",
+                                    "click": "openHennepinCounty"
+                                }
+                            }
+                        },
+                        {
+                            "type": "rtv-core-action",
+                            "data": {
+                                "props": {
+                                    "label": "Your County",
+                                    "click": "openYourCounty"
+                                }
+                            }
+                        },
+                        {
+                            "type": "rtv-core-action",
+                            "data": {
+                                "props": {
+                                    "label": "New Organization",
+                                    "click": "openOrganization"
+                                }
+                            }
+                        },
+                        {
+                            "type": "rtv-core-action",
+                            "data": {
+                                "props": {
+                                    "label": "New Contact",
+                                    "click": "openContact"
+                                }
+                            }
+                        },
+                        {
+                            "type": "rtv-core-action",
+                            "data": {
+                                "props": {
+                                    "label": "New Employee",
+                                    "click": "openEmployee"
+                                }
+                            }
+                        },
+                        {
+                            "type": "rtv-core-action",
+                            "data": {
+                                "props": {
+                                    "label": "NewUserAccount",
+                                    "click": "openUserAccount"
+                                }
+                            }
+                        },
+                        {
+                            "name": "rtv-core-action",
+                            "data": {
+                                "props": {
+                                    "label": "New Item",
+                                    "click": "openItem"
+                                }
+                            }
+                        },
+                        {
+                            "type": "rtv-core-link",
+                            "data": {
+                                "props": {
+                                    "label": "My Account",
+                                    "href": "/oneOffice/profile/**"
+                                }
+                            }
+                        },
+                        {
+                            "type": "rtv-core-link",
+                            "data": {
+                                "props": {
+                                    "label": "Settings",
+                                    "href": "/oneOffice/profile/**"
+                                }
+                            }
+                        },
+                        {
+                            "type": "rtv-core-action",
+                            "data": {
+                                "props": {
+                                    "label": "Sign Out",
+                                    "click": "openSignOut"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "rtv-core-modal-help",
+                    "name": "helpModal",
+                    "iconName": "help"
+                }
+            ]
+        },
+        "components": {}
+    }
+}

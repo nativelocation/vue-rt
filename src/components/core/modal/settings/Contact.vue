@@ -153,9 +153,9 @@
 </template>
 
 <script>
-import ModalHeader from '@/components/modal/ModalHeader.vue';
+import ModalHeader from '@/components/core/modal/ModalHeader.vue';
 import Footer from '@/components/core/Footer.vue';
-import ModalHelp from '@/components/modal/ModalHelp.vue';
+import ModalHelp from '@/components/core/modal/ModalHelp.vue';
 
 export default {
 	data: function () {

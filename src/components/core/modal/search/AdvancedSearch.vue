@@ -57,7 +57,7 @@
 </template>
 
 <script>
-import ModalHeader from '@/components/modal/ModalHeader.vue';
+import ModalHeader from '@/components/core/modal/ModalHeader.vue';
 import Footer from '@/components/core/Footer.vue';
 import VueDatepickerLocal from 'vue-datepicker-local';
 import _ from 'lodash';
