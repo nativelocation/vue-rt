@@ -4,7 +4,7 @@
 		<keep-alive :key="component.type">
 			<RTVCoreComponentProxy
 				:name="component.type"
-				:data="$copyObject(component.data)"/>
+				:data="component.data ? $copyObject(component.data) : {}"/>
 		</keep-alive>
 	</template>
 </div>

@@ -246,7 +246,11 @@
 									"data": {
 										"props": {
 											"label": "New Organization",
-											"click": "openOrganization"
+											"click": "openOrganization",
+											"styles": {
+												"color": "black",
+												"textAlign": "left"
+											}
 										}
 									}
 								},
@@ -256,7 +260,11 @@
 									"data": {
 										"props": {
 											"label": "New Contact",
-											"click": "openContact"
+											"click": "openContact",
+											"styles": {
+												"color": "black",
+												"textAlign": "left"
+											}
 										}
 									}
 								},
@@ -266,7 +274,11 @@
 									"data": {
 										"props": {
 											"label": "New Employee",
-											"click": "openEmployee"
+											"click": "openEmployee",
+											"styles": {
+												"color": "black",
+												"textAlign": "left"
+											}
 										}
 									}
 								},
@@ -276,7 +288,11 @@
 									"data": {
 										"props": {
 											"label": "NewUserAccount",
-											"click": "openUserAccount"
+											"click": "openUserAccount",
+											"styles": {
+												"color": "black",
+												"textAlign": "left"
+											}
 										}
 									}
 								},
@@ -286,7 +302,11 @@
 									"data": {
 										"props": {
 											"label": "New Item",
-											"click": "openItem"
+											"click": "openItem",
+											"styles": {
+												"color": "black",
+												"textAlign": "left"
+											}
 										}
 									}
 								},
@@ -295,7 +315,11 @@
 									"data": {
 										"props": {
 											"label": "My Account",
-											"href": "oneOffice/profile/**"
+											"href": "oneOffice/profile/**",
+											"styles": {
+												"color": "black",
+												"textAlign": "left"
+											}
 										}
 									}
 								},
@@ -304,7 +328,11 @@
 									"data": {
 										"props": {
 											"label": "Settings",
-											"href": "oneOffice/profile/**"
+											"href": "oneOffice/profile/**",
+											"styles": {
+												"color": "black",
+												"textAlign": "left"
+											}
 										}
 									}
 								},
@@ -314,7 +342,11 @@
 									"data": {
 										"props": {
 											"label": "Sign Out",
-											"click": "openSignOut"
+											"click": "openSignOut",
+											"styles": {
+												"color": "black",
+												"textAlign": "left"
+											}
 										}
 									}
 								}

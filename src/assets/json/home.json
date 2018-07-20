@@ -14,17 +14,17 @@
 					"sub": [
 						{
 							"label": "Planning",
-							"href": "/projects/planning",
+							"href": "/oneoffice/contract/planning",
 							"disabled": false
 						},
 						{
 							"label": "Bidding",
-							"href": "/projects/bidding",
+							"href": "/oneoffice/contract/bidding",
 							"disabled": false
 						},
 						{
 							"label": "Construction",
-							"href": "/projects/construction",
+							"href": "/oneoffice/contract/construction",
 							"disabled": false
 						}
 					]
