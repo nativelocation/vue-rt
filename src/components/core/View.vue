@@ -1,16 +1,17 @@
 <template>
 <div>
 	<template v-for="component in components">
-		<keep-alive :key="component.name">
+		<keep-alive :key="component.type">
 			<RTVCoreComponentProxy
-				:name="component.name"
+				:name="component.type"
 				:data="$copyObject(component.data)"/>
 		</keep-alive>
 	</template>
 </div>
 </template>
 <script>
-import dashboardData from '@/assets/json/dashboard.json';
+// import dashboardData from '@/assets/json/dashboard.json';
+import homeData from '@/assets/json/home.json';
 export default {
 	name: 'RTVCoreView',
 	created: function () {
@@ -26,7 +27,7 @@ export default {
 		return {
 			components: [],
 			currentPath: '',
-			exampleData: dashboardData
+			exampleData: homeData
 		};
 	},
 	props: [

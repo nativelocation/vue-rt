@@ -64,17 +64,9 @@ export default {
 		data: {
 			type: Object,
 			default: () => {}
-		},
-		actions: {
-			type: Object,
-			default: null
 		}
 	},
 	render: function (createElement) {
-		// if (this.actions !== null) {
-		// 	// const data = $copyObject(this.data).delete('props')
-		// 	return createElement(this.resolveComponent(), { props: { ...this.data.props, ...this.actions } });
-		// }
 		return createElement(this.resolveComponent(), this.data);
 	},
 	methods: {

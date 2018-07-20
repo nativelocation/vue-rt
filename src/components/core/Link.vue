@@ -1,6 +1,6 @@
 <template>
 <div class="link-wrapper">
-	<b-link :to="'/' + href">
+	<b-link :to="'/' + href" class="link-wrapper">
 		<div>
 			<icon v-if="iconName !== null" :name="iconName" class="icon"/>
 		</div>
@@ -36,10 +36,11 @@ export default {
 <style lang="sass">
 @import '~$styles/fonts';
 @import '~$styles/variables';
-.link-wrapper {
+.link-wrapper, .link-wrapper.hover {
 	box-sizing: border-box;
 	a {
 		text-align: center;
+		text-decoration: none;
 	}
 }
 .icon {

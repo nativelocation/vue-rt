@@ -1,6 +1,6 @@
 <template>
 <div>
-	<header v-if="header !== null" class="main-header">
+	<header v-if="header !== null" class="main-header d-flex align-items-center">
 		{{ header }}
 	</header>
 	<main class="main-content">
