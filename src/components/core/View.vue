@@ -321,7 +321,21 @@ export default {
 						}
 					}
 				});
-			} else {
+			} else if (path.includes('/example/')){
+				var resp;
+				try{
+					resp = await this.$fetchJSON('/api/example' + this.$store.state.route.path);
+				}
+				catch (error){
+					//if unable to get JSOn then we will fall back to mock json
+				}
+				if (typeof resp.data.menu !== 'undefined') {
+					resp.data.menu.forEach((ele) => {
+					this.menuItems.push(ele);
+					});
+				}
+				this.components = resp.data.components;
+			}else {
 				const resp = await this.$fetchJSON('/api/view' + this.$store.state.route.path);
 				console.log('pushing components');
 				if (typeof resp.data.menu !== 'undefined') {
