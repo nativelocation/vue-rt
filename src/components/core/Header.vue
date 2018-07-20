@@ -49,9 +49,9 @@
 				<div class="site-title d-flex align-items-center">
 					<i class="material-icons dashboard-menu" @click="mainMenu=true">apps</i>
 					<router-link class="text-logo-dash pl-3" to="/">OneOffice</router-link>
-					<div v-if="$route.name === 'profile'" class="text-seperator ml-3"></div>
-					<div v-if="$route.name === 'profile'" class="text-header-des pl-3">
-						Account and Settings
+					<div class="text-seperator ml-3"></div>
+					<div class="text-header-des pl-3">
+						Hennepin Co
 					</div>
 				</div>
 			</div>
@@ -225,7 +225,7 @@ export default {
 		.text-seperator {
 			width: 0;
 			height: 45px;
-			border: 0.06rem solid $gray-200;
+			border: 0.06rem solid $white;
 		}
 		.text-header-des {
 			font-family: arial;

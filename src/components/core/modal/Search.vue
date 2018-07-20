@@ -6,14 +6,18 @@
 		<i class="material-icons search-dropdown-icons">search</i>
 	</div>
 	<div class="search-dropdown-option d-flex justify-content-between">
-		<div @click="handleOpenAdvancedSearchModal">Advanced Search</div>
-		<div @click="handleOpenListAllModal">List All</div>
+		<div @click="advancedSearchModalShow=true">Advanced Search</div>
+		<div @click="listAllModalShow=true">List All</div>
 	</div>
 	<label class="search-dropdown-list">Recent Contracts</label>
+	<ListAll v-if="listAllModalShow" :handleClose="handleCloseListAllModal" class="modal-child" />
+	<AdvancedSearch v-if="advancedSearchModalShow" :handleClose="handleCloseAdvancedSearchModal" class="modal-child" />
 </div>
 </template>
 
 <script>
+import ListAll from '@/components/core/modal/ListAll';
+import AdvancedSearch from '@/components/core/modal/AdvancedSearch';
 export default {
 	data: function () {
 		return {
@@ -21,15 +25,17 @@ export default {
 			advancedSearchModalShow: false
 		};
 	},
-	props: {
-		handleOpenListAllModal: {
-			type: Function,
-			default: () => {}
+	methods: {
+		handleCloseListAllModal () {
+			this.listAllModalShow = false;
 		},
-		handleOpenAdvancedSearchModal: {
-			type: Function,
-			default: () => {}
+		handleCloseAdvancedSearchModal () {
+			this.advancedSearchModalShow = false;
 		}
+	},
+	components: {
+		AdvancedSearch,
+		ListAll
 	}
 };
 </script>
