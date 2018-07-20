@@ -10,7 +10,7 @@
 </div>
 </template>
 <script>
-// import dashboardData from '@/assets/json/dashboard.json';
+import dashboardData from '@/assets/json/dashboard.json';
 import homeData from '@/assets/json/home.json';
 export default {
 	name: 'RTVCoreView',
@@ -26,8 +26,7 @@ export default {
 	data: function () {
 		return {
 			components: [],
-			currentPath: '',
-			exampleData: homeData
+			currentPath: ''
 		};
 	},
 	props: [
@@ -67,8 +66,17 @@ export default {
 						}
 					}
 				});
-			} else if (path.includes('/example/')) {
-				const resp = this.exampleData;
+			} else if (path.includes('/example/home')) {
+				const resp = homeData;
+				if (typeof resp.data.menu !== 'undefined') {
+					this.updateMenu(resp.data.menu);
+					// resp.data.menu.forEach((ele) => {
+					// 	this.menuItems.push(ele);
+					// });
+				}
+				this.components = resp.data.components;
+			} else if (path.includes('/example/dashboard')) {
+				const resp = dashboardData;
 				if (typeof resp.data.menu !== 'undefined') {
 					this.updateMenu(resp.data.menu);
 					// resp.data.menu.forEach((ele) => {
