@@ -6,14 +6,14 @@
 		},
 		"components": [
 			{
-				"type": "rtv-core-dashboard",
-				"name": "dashboard",
+				"name": "rtv-core-dashboard",
+				"id": "dashboard",
 				"data": {
 					"props": {
-						"subComponents": [
+						"components": [
 							{
-								"type": "rtv-core-report",
-								"name": "dashboardReport",
+								"name": "rtv-core-report",
+								"id": "dashboardReport",
 								"data": {
 									"props": {
 										"header": {
@@ -33,8 +33,8 @@
 								}
 							},
 							{
-								"type": "rtv-core-report",
-								"name": "dashboardReport",
+								"name": "rtv-core-report",
+								"id": "dashboardReport",
 								"data": {
 									"props": {
 										"header": {
@@ -54,8 +54,8 @@
 								}
 							},
 							{
-								"type": "rtv-core-report",
-								"name": "dashboardReport",
+								"name": "rtv-core-report",
+								"id": "dashboardReport",
 								"data": {
 									"props": {
 										"header": {
@@ -75,8 +75,8 @@
 								}
 							},
 							{
-								"type": "rtv-core-report",
-								"name": "dashboardReport",
+								"name": "rtv-core-report",
+								"id": "dashboardReport",
 								"data": {
 									"props": {
 										"header": {
@@ -96,8 +96,8 @@
 								}
 							},
 							{
-								"type": "rtv-core-report",
-								"name": "dashboardReport",
+								"name": "rtv-core-report",
+								"id": "dashboardReport",
 								"data": {
 									"props": {
 										"header": {

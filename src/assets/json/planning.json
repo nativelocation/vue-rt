@@ -7,15 +7,15 @@
 		},
 		"components": [
 			{
-				"type": "rtv-core-banner",
+				"name": "rtv-core-banner",
 				"data": {
 					"class": {
 						"home-banner-image": true
 					},
 					"props": {
-						"subComponents": [
+						"components": [
 							{
-								"type": "rtv-core-link",
+								"name": "rtv-core-link",
 								"data": {
 									"props": {
 										"label": "Planning Projects",
@@ -29,7 +29,7 @@
 								}
 							},
 							{
-								"type": "rtv-core-link",
+								"name": "rtv-core-link",
 								"data": {
 									"props": {
 										"label": "Projects in Bidding",
@@ -43,7 +43,7 @@
 								}
 							},
 							{
-								"type": "rtv-core-link",
+								"name": "rtv-core-link",
 								"data": {
 									"props": {
 										"label": "Projects in Construction",
@@ -57,7 +57,7 @@
 								}
 							},
 							{
-								"type": "rtv-core-link",
+								"name": "rtv-core-link",
 								"data": {
 									"props": {
 										"label": "Reports",
@@ -75,13 +75,13 @@
 				}
 			},
 			{
-				"type": "rtv-core-main",
+				"name": "rtv-core-main",
 				"data": {
 					"props": {
 						"header": "Planning Projects",
 						"components": [
 							{
-								"type": "rtv-core-table",
+								"name": "rtv-core-table",
 								"data": {}
 							}
 						]

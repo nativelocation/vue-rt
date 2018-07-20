@@ -68,12 +68,7 @@ export default {
 		this.validatedFilter(this.inputValue); // filter right away
 		this.inCreated = false;
 		if (this.onItemClicked() === null) {
-			this.validatedOnItemClicked = function (event) {
-				this.itemClicked = true;
-				this.$root.$emit('bv::hide::popover', this.id);
-				this.inputValue = event.target.dataset.filter;
-				this.$emit('input', JSON.parse(event.target.dataset.value));
-			}.bind(this);
+			this.validatedOnItemClicked = this.clickHandler;
 		}
 	},
 	mounted: function () {
@@ -93,6 +88,14 @@ export default {
 			// Apply filter on new items
 			this.validatedFilter(this.inputValue); // filter right away
 			this.inCreated = false;
+		}
+	},
+	methods: {
+		clickHandler (event) {
+			this.itemClicked = true;
+			this.$root.$emit('bv::hide::popover', this.id);
+			this.inputValue = event.target.dataset.filter;
+			this.$emit('input', JSON.parse(event.target.dataset.value));
 		}
 	},
 	props: {
@@ -168,5 +171,3 @@ export default {
 	}
 };
 </script>
-<style>
-</style>

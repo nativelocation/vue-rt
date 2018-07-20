@@ -6,10 +6,10 @@
 		},
 		"components": [
 			{
-				"type": "rtv-core-sidebar",
+				"name": "rtv-core-sidebar",
 				"data": {
 					"props": {
-						"Items": [
+						"items": [
 							{
 								"name": "My account",
 								"iconName": "home",
@@ -29,10 +29,14 @@
 								"href": "/dashboard/settings"
 							}
 						],
-						"RequestData": {
-							"method": "GET",
-							"path": "/api/oneoffice/dashboard/settings",
-							"body": {}
+						"component": {
+							"name": "rtv-core-settings",
+							"data": {
+								"props": {
+									"components": [
+									]
+								}
+							}
 						}
 					}
 				}

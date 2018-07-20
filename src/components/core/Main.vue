@@ -5,9 +5,9 @@
 	</header>
 	<main class="main-content">
 		<template v-for="component in components">
-			<keep-alive :key="component.type">
+			<keep-alive :key="component.name">
 				<RTVCoreComponentProxy
-					:name="component.type"
+					:name="component.name"
 					:data="$copyObject(component.data)"/>
 			</keep-alive>
 		</template>

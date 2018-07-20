@@ -16,7 +16,7 @@
 						</i>
 					</li>
 					<li
-						v-for="item in Items"
+						v-for="item in items"
 						:key="item.name"
 						class="sidebar-menu-item"
 						:class="item.active ? 'sidebar-menu-item-bg' : ''">
@@ -39,6 +39,13 @@
 				</ul>
 			</nav>
 			<main class="dashboard-main">
+				<template>
+					<keep-alive>
+						<RTVCoreComponentProxy
+							:name="component.name"
+							:data="component.data ? $copyObject(component.data) : {}"/>
+					</keep-alive>
+				</template>
 			</main>
 		</div>
 	</div>
@@ -47,19 +54,19 @@
 
 <script>
 export default {
+	name: 'RTVCoreSidebar',
 	data: function () {
 		return {
 			sidebarDir: false
 		};
 	},
 	props: {
-		Items: {
+		items: {
 			type: Array,
-			default: []
+			default: () => []
 		},
-		RequestData: {
-			type: Object,
-			default: {}
+		component: {
+			type: Object
 		}
 	},
 	methods: {
@@ -115,6 +122,7 @@ export default {
 			width: 72px;
 		}
 		.dashboard-main {
+			background: $gray-200;
 			flex: 1;
 		}
 		@media screen and (max-width: 576px) {

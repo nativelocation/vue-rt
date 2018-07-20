@@ -199,7 +199,7 @@ module.exports = (env, argv) => {
 
 	if (config.build.bundleAnalyzerReport) {
 		const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-		webpackConfig.plugins.push(new BundleAnalyzerPlugin({analyzerHost: 'localhost', analyzerPort: 6062}));
+		webpackConfig.plugins.push(new BundleAnalyzerPlugin({analyzerHost: '0.0.0.0', analyzerPort: 6063}));
 	}
 
 	webpackConfig.plugins.push(htmlPlugin);

@@ -90,7 +90,7 @@ export default {
 		const dataPromise = this.$fetchJSON(...params);
 
 		const optionsResponse = await optionsPromise;
-		const databaseFields = this.$parseSchemaObject(optionsResponse.get.returns, optionsResponse).data.items;
+		const databaseFields = this.$parseSchemaObject(optionsResponse.get.returns, optionsResponse).properties.data.items.properties;
 
 		let attributes = null;
 		if (this.$isDefined(this.formattedBody) &&

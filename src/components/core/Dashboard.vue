@@ -7,10 +7,10 @@
 				<img :src="getMark" />
 			</div>
 			<div class="reports d-flex flex-wrap m-0 p-0">
-				<div class="col-lg-4 my-2" v-for="(component, index) in subComponents" :key="index">
+				<div class="col-lg-4 my-2" v-for="(component, index) in components" :key="index">
 					<keep-alive>
 						<RTVCoreComponentProxy
-							:name="component.type"
+							:name="component.name"
 							:data="component.data ? $copyObject(component.data) : {}"/>
 					</keep-alive>
 				</div>
@@ -25,7 +25,7 @@ import mark from '@/assets/images/HennepinCo.png';
 export default {
 	name: 'rtv-core-dashboard',
 	props: {
-		subComponents: {
+		components: {
 			type: Array
 		}
 	},

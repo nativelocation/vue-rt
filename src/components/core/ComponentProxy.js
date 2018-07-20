@@ -35,12 +35,15 @@ export default {
 						import: component => import(
 							/* webpackChunkName: "core",
 							   webpackExclude: /View.vue$/,
-							   webpackInclude: /\.vue$/,
+							   webpackInclude: /^.+\/core\/[^\/]+\.vue$/,
 							   webpackMode: "lazy-once" */
 							`@/components/core/${component}`
 						),
 						modal: {
 							import: component => import(
+							/* webpackChunkName: "modal",
+							   webpackInclude: /\.vue$/,
+							   webpackMode: "lazy-once" */
 								`@/components/core/modal/${component}`
 							)
 						}

@@ -13,7 +13,7 @@
 						"home-banner-image": true
 					},
 					"props": {
-						"subComponents": [
+						"components": [
 							{
 								"name": "rtv-core-link",
 								"data": {
@@ -81,7 +81,7 @@
 						"header": "Lorem ipsum dolor sit amet",
 						"components": [
 							{
-								"type": "rtv-core-paragraph",
+								"name": "rtv-core-paragraph",
 								"data": {
 									"props": {
 										"header": "Suspendisse quis porttitor ipsum.",
@@ -90,7 +90,7 @@
 								}
 							},
 							{
-								"type": "rtv-core-paragraph",
+								"name": "rtv-core-paragraph",
 								"data": {
 									"props": {
 										"header": "Pellentesque dictum massa.",

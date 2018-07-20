@@ -2,9 +2,9 @@
 <div id="banner" class="top-banner justify-content-around align-items-center d-flex">
 	<div class="category-icons d-flex justify-content-around align-items-center">
 		<div class="w-100 d-flex justify-content-around flex-wrap">
-			<template v-for="subComponent in subComponents">
-				<keep-alive :key="subComponent.name">
-					<RTVCoreComponentProxy :name="subComponent.name" :data="$copyObject(subComponent.data)"/>
+			<template v-for="component in components">
+				<keep-alive :key="component.name">
+					<RTVCoreComponentProxy :name="component.name" :data="$copyObject(component.data)"/>
 				</keep-alive>
 			</template>
 		</div>
@@ -16,7 +16,7 @@
 export default {
 	name: 'RTVCoreBanner',
 	props: {
-		subComponents: {
+		components: {
 			type: Array,
 			default: () => []
 		}

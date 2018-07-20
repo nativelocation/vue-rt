@@ -18,16 +18,13 @@ export default {
 	name: 'RTVCoreReport',
 	props: {
 		header: {
-			type: Object,
-			default: {}
+			type: Object
 		},
 		footer: {
-			type: Object,
-			default: {}
+			type: Object
 		},
 		requestData: {
-			type: Object,
-			default: {}
+			type: Object
 		}
 	}
 };

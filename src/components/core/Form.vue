@@ -1,6 +1,6 @@
 <template>
 <b-container fluid>
-	<b-form-row v-for="componentOption in componentOptions" :key="componentOption.label" @input="test" class="mt-2">
+	<b-form-row v-for="componentOption in componentOptions" :key="componentOption.label" class="mt-2">
 		<b-col cols="1">
 			<label>{{componentOption.label}}:</label>
 		</b-col>
@@ -28,24 +28,24 @@ export default {
 	data: function () {
 		return {
 			apiPath: null,
-			inputs: [],
-			baseObject: {},
-			saveObject: {},
 			schema: null,
+			parsedSchema: null,
 			componentOptions: []
 		};
 	},
 	created: async function () {
 		this.apiPath = this.$store.state.route.path.replace('form', 'api');
 		this.schema = await this.$fetchJSON(this.apiPath, 'OPTIONS');
-		let parsedObject = null;
 		if (this.$isDefined(this.schema.post)) {
-			parsedObject = this.$parseSchemaObject(this.$copyObject(this.schema.post.expects), this.schema);
+			this.parsedObject = this.$parseSchemaObject(this.$copyObject(this.schema.post.expects), this.schema);
 		} else if (this.$isDefined(this.schema.put)) {
-			parsedObject = this.$parseSchemaObject(this.$copyObject(this.schema.put.expects), this.schema);
+			this.parsedObject = this.$parseSchemaObject(this.$copyObject(this.schema.put.expects), this.schema);
 		}
-		if (parsedObject !== null) this.componentOptions = this.parseOptions(parsedObject);
-		this.saveObject = this.$copyObject(this.baseObject);
+		if (this.parsedObject !== null) {
+			this.componentOptions = this.parseOptions(this.parsedObject);
+			this.$store.commit('setFormSaveObject', this.createFormSaveObject(this.parsedObject));
+			this.$store.commit('setFormValidationObject', this.parsedObject);
+		}
 	},
 	props: {
 		backLink: {
@@ -54,27 +54,40 @@ export default {
 		}
 	},
 	methods: {
-		test (val) {
-			console.log(val);
-		},
-		parseOptions (options) {
+		parseOptions (options, parent = '') {
 			let components = [];
-			for (let prop in options) {
+			for (let prop in options.properties) {
 				// checking if sub property is an object or literal
-				if (prop !== 'required' && (!this.$isDefined(options[prop].type) || options[prop].type === 'object')) {
-					components = components.concat(this.parseOptions(options[prop]));
+				if (prop !== 'required' && options.properties[prop].type === 'object') {
+					components = components.concat(this.parseOptions(options.properties[prop], parent !== '' ? parent + '.' + prop : prop));
+				// not sure if we event want to tell the components about the required properties
+				// or if we want to just do all validation with the json schema
 				} else if (prop === 'required') {
 				} else {
-					components.push(options[prop]);
+					options.properties[prop].saveObjectProperty = parent !== '' ? parent + '.' + prop : prop;
+					components.push(options.properties[prop]);
 				}
 			}
 			return components;
 		},
+		createFormSaveObject (parsedObject) {
+			let saveObject = {};
+			for (let prop in parsedObject.properties) {
+				// checking if sub property is an object or literal
+				// if object parse it
+				if (prop !== 'required' && parsedObject.properties[prop].type === 'object') {
+					saveObject[prop] = this.createFormSaveObject(parsedObject.properties[prop]);
+				// don't care aboure required props in saveObject validObject will handle that
+				} else if (prop !== 'required') {
+					saveObject[prop] = null;
+				}
+			}
+			return saveObject;
+		},
 		submitForm () {
-			const json = this.$filterUnchangedData(this.saveObject, this.baseObject);
-			const schema = this.schema.post.expects;
-			schema.definitions = this.schema.defintions;
-			if (this.$ajv.validate(schema, json)) {
+			const json = this.$filterUnchangedData(this.$store.state.formSaveObject, this.$store.state.formBaseObject);
+			console.log(this.parsedObject);
+			if (this.$ajv.validate(this.parsedObject, json)) {
 				this.$fetchJSON(this.apiPath, 'POST', json);
 			}
 		}

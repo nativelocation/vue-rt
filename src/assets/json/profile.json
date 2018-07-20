@@ -6,10 +6,10 @@
 		},
 		"components": [
 			{
-				"type": "rtv-core-sidebar",
+				"name": "rtv-core-sidebar",
 				"data": {
 					"props": {
-						"Items": [
+						"items": [
 							{
 								"name": "My account",
 								"iconName": "home",
@@ -29,10 +29,115 @@
 								"href": "/dashboard/settings"
 							}
 						],
-						"RequestData": {
-							"method": "GET",
-							"path": "/api/oneoffice/dashboard/profile",
-							"body": {}
+						"component": {
+							"name": "rtv-core-profile",
+							"data": {
+								"props": {
+									"components": [
+										{
+											"name": "rtv-core-avatar",
+											"id": "avatar",
+											"data": {
+												"props": {
+													"username": "John Doe",
+													"avatarLink": ""
+												}
+											}
+										},
+										{
+											"name": "rtv-core-userInfo",
+											"id": "userInfo",
+											"data": {
+												"props": {
+													"title": "About",
+													"content": [
+														{
+															"title": "First Name",
+															"value": "John"
+														},
+														{
+															"title": "Last Name",
+															"value": "Doe"
+														},
+														{
+															"title": "Occupation",
+															"value": ""
+														},
+														{
+															"title": "Department",
+															"value": ""
+														}
+													],
+													"getLink": "/api/oneoffice/dashboard/profile/about/get",
+													"editLink": "/api/oneoffice/dashboard/profile/about/edit"
+												}
+											}
+										},
+										{
+											"name": "rtv-core-userInfo",
+											"id": "userInfo",
+											"data": {
+												"props": {
+													"title": "Address",
+													"content": [
+														{
+															"title": "Address",
+															"value": "925 1st South"
+														},
+														{
+															"title": "City",
+															"value": "Saint Cloud"
+														},
+														{
+															"title": "State or province",
+															"value": "MN"
+														},
+														{
+															"title": "Country or region",
+															"value": "United States"
+														}
+													],
+													"getLink": "/api/oneoffice/dashboard/profile/address/get",
+													"editLink": "/api/oneoffice/dashboard/profile/address/edit"
+												}
+											}
+										},
+										{
+											"name": "rtv-core-userInfo",
+											"id": "userInfo",
+											"data": {
+												"props": {
+													"title": "Contact details",
+													"content": [
+														{
+															"title": "Email",
+															"value": "John"
+														},
+														{
+															"title": "Alias",
+															"value": "RT Vision"
+														},
+														{
+															"title": "Mobile",
+															"value": ""
+														},
+														{
+															"title": "Phone",
+															"value": "555-555-5555"
+														},
+														{
+															"title": "Alternate email",
+															"value": "email@email.com"
+														}
+													],
+													"getLink": "/api/oneoffice/dashboard/profile/contact/get",
+													"editLink": "/api/oneoffice/dashboard/profile/contact/edit"
+												}
+											}
+										}
+									]
+								}
+							}
 						}
 					}
 				}

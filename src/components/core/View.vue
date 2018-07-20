@@ -1,8 +1,9 @@
 <template>
 <div>
 	<template v-for="component in components">
-		<keep-alive :key="component.name">
+		<keep-alive>
 			<RTVCoreComponentProxy
+				:key="component.name"
 				:name="component.name"
 				:data="component.data ? $copyObject(component.data) : {}"/>
 		</keep-alive>
@@ -23,6 +24,7 @@ import planning from '@/assets/json/planning.json';
 import profile from '@/assets/json/profile.json';
 import security from '@/assets/json/security.json';
 import settings from '@/assets/json/settings.json';
+import dashboardData from '@/assets/json/dashboard.json';
 
 export default {
 	name: 'RTVCoreView',
@@ -74,38 +76,38 @@ export default {
 					}
 				});
 			} else if (path.includes('/example/login')) {
-				this.updateMenu(homeMenuPublic);
+				this.$store.commit('updateMenu', login);
 				this.components = login.data.components;
 			} else if (path.includes('/example/home_public')) {
-				this.updateMenu(homeMenuPublic);
+				this.$store.commit('updateMenu', homeMenuPublic);
 				this.components = homePublic.data.components;
 			} else if (path.includes('/example/home_auth')) {
-				this.updateMenu(homeMenuAuth);
+				this.$store.commit('updateMenu', homeMenuAuth);
 				this.components = homeAuth.data.components;
 			} else if (path.includes('/example/dashboard_public')) {
-				this.updateMenu(dashboardMenuPublic);
+				this.$store.commit('updateMenu', dashboardMenuPublic);
 				this.components = dashboardPublic.data.components;
 			} else if (path.includes('/example/dashboard_auth')) {
-				this.updateMenu(dashboardMenuAuth);
+				this.$store.commit('updateMenu', dashboardMenuAuth);
 				this.components = dashboardAuth.data.components;
 			} else if (path.includes('/example/contract/planning')) {
-				this.updateMenu(homeMenuPublic);
+				this.$store.commit('updateMenu', homeMenuPublic);
 				this.components = planning.data.components;
 			} else if (path.includes('/example/dashboard/profile')) {
-				this.updateMenu(dashboardMenuAuth);
+				this.$store.commit('updateMenu', dashboardMenuAuth);
 				this.components = profile.data.components;
 			} else if (path.includes('/example/dashboard/security')) {
-				this.updateMenu(dashboardMenuAuth);
+				this.$store.commit('updateMenu', dashboardMenuAuth);
 				this.components = security.data.components;
 			} else if (path.includes('/example/dashboard/settings')) {
-				this.updateMenu(dashboardMenuAuth);
+				this.$store.commit('updateMenu', dashboardMenuAuth);
 				this.components = settings.data.components;
 			} else if (path.includes('/example/home')) {
-				const resp = homeData;
+				/* const resp = homeData;
 				if (typeof resp.data.menu !== 'undefined') {
 					this.$store.commit('updateMenu', resp.data.menu);
 				}
-				this.components = resp.data.components;
+				this.components = resp.data.components; */
 			} else if (path.includes('/example/dashboard')) {
 				const resp = dashboardData;
 				if (typeof resp.data.menu !== 'undefined') {
@@ -114,12 +116,11 @@ export default {
 				this.components = resp.data.components;
 			} else {
 				const resp = await this.$fetchJSON('/api/view' + path);
-				if (typeof resp.data.menu !== 'undefined') {
+				if (resp.data !== null && Array.isArray(resp.data.menu) && Array.isArray(this.menuItems)) {
 					resp.data.menu.forEach((ele) => {
 						this.menuItems.push(ele);
 					});
 				}
-				console.log(resp.data.components);
 				this.components = resp.data.components;
 			}
 			this.$store.commit('setLoading', false);

@@ -81,7 +81,10 @@ const utils = {
 	 * baseSchema = the whole options request made to get the schemaObj, used to resolve references
 	 */
 	$parseSchemaObject: function (schemaObj, baseSchema) {
-		const parsedSchema = {};
+		const parsedSchema = {
+			properties: {},
+			type: 'object'
+		};
 		if (this.$isDefined(schemaObj.$ref)) {
 			schemaObj = this.$resolveReference(schemaObj, baseSchema);
 		}
@@ -94,17 +97,17 @@ const utils = {
 					schemaObj.properties[prop] = this.$resolveReference(schemaObj.properties[prop], baseSchema);
 				}
 				if (schemaObj.properties[prop].type === 'object') {
-					parsedSchema[prop] = this.$parseSchemaObject(schemaObj.properties[prop], baseSchema);
+					parsedSchema.properties[prop] = this.$parseSchemaObject(schemaObj.properties[prop], baseSchema);
 				} else if (schemaObj.properties[prop].type === 'array') {
-					parsedSchema[prop] = schemaObj.properties[prop];
+					parsedSchema.properties[prop] = schemaObj.properties[prop];
 					if (this.$isDefined(schemaObj.properties[prop].items.$ref)) {
 						schemaObj.properties[prop].items = this.$resolveReference(schemaObj.properties[prop].items, baseSchema);
 					}
 					if (schemaObj.properties[prop].items.type === 'object') {
-						parsedSchema[prop].items = this.$parseSchemaObject(schemaObj.properties[prop].items, baseSchema);
+						parsedSchema.properties[prop].items = this.$parseSchemaObject(schemaObj.properties[prop].items, baseSchema);
 					}
 				} else {
-					parsedSchema[prop] = schemaObj.properties[prop];
+					parsedSchema.properties[prop] = schemaObj.properties[prop];
 				}
 			}
 		}
@@ -135,9 +138,10 @@ const utils = {
 	},
 	$isDefined: value => typeof value !== 'undefined'
 };
+utils.$ajv.addMetaSchema(DraftSix);
 export default {
 	install: (Vue, options) => {
-		utils.$ajv.addMetaSchema(DraftSix);
 		Object.assign(Vue.prototype, utils);
 	}
 };
+export const ajv = utils.$ajv;

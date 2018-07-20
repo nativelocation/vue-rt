@@ -3,14 +3,14 @@
     "role": "public",
     "menus": [
         {
-            "name": "searchModal",
-            "type": "rtv-core-modal-search",
+            "id": "searchModal",
+            "name": "rtv-core-modal-search",
             "iconName": "search"
         },
         {
             "label": "Log in",
-            "name": "loginModal",
-            "type": "rtv-core-modal-login",
+            "id": "loginModal",
+            "name": "rtv-core-modal-login",
             "iconName": "exit_to_app"
         }
     ]

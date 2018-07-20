@@ -459,7 +459,7 @@
 							'home-banner-image': true
 						},
 						props: {
-							subComponents: [
+							components: [
 								{
 									name: 'rtv-core-link',
 									data: {

@@ -7,15 +7,15 @@
 		},
 		"components": [
 			{
-				"type": "rtv-core-banner",
+				"name": "rtv-core-banner",
 				"data": {
 					"class": {
 						"home-banner-image": true
 					},
 					"props": {
-						"subComponents": [
+						"components": [
 							{
-								"type": "rtv-core-link",
+								"name": "rtv-core-link",
 								"data": {
 									"props": {
 										"label": "Planning Projects",
@@ -29,7 +29,7 @@
 								}
 							},
 							{
-								"type": "rtv-core-link",
+								"name": "rtv-core-link",
 								"data": {
 									"props": {
 										"label": "Projects in Bidding",
@@ -43,7 +43,7 @@
 								}
 							},
 							{
-								"type": "rtv-core-link",
+								"name": "rtv-core-link",
 								"data": {
 									"props": {
 										"label": "Projects in Construction",
@@ -57,7 +57,7 @@
 								}
 							},
 							{
-								"type": "rtv-core-link",
+								"name": "rtv-core-link",
 								"data": {
 									"props": {
 										"label": "Reports",
@@ -75,13 +75,13 @@
 				}
 			},
 			{
-				"type": "rtv-core-main",
+				"name": "rtv-core-main",
 				"data": {
 					"props": {
 						"header": "Lorem ipsum dolor sit amet",
 						"components": [
 							{
-								"type": "rtv-core-paragraph",
+								"name": "rtv-core-paragraph",
 								"data": {
 									"props": {
 										"header": "Suspendisse quis porttitor ipsum.",
@@ -90,7 +90,7 @@
 								}
 							},
 							{
-								"type": "rtv-core-paragraph",
+								"name": "rtv-core-paragraph",
 								"data": {
 									"props": {
 										"header": "Pellentesque dictum massa.",
