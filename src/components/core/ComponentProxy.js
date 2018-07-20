@@ -62,8 +62,7 @@ export default {
 			required: true
 		},
 		data: {
-			type: Object,
-			default: () => {}
+			type: Object
 		}
 	},
 	render: function (createElement) {

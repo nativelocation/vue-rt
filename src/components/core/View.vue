@@ -1,17 +1,29 @@
 <template>
 <div>
 	<template v-for="component in components">
-		<keep-alive :key="component.type">
+		<keep-alive :key="component.name">
 			<RTVCoreComponentProxy
-				:name="component.type"
+				:name="component.name"
 				:data="component.data ? $copyObject(component.data) : {}"/>
 		</keep-alive>
 	</template>
 </div>
 </template>
 <script>
-import dashboardData from '@/assets/json/dashboard.json';
-import homeData from '@/assets/json/home.json';
+import dashboardMenuPublic from '@/assets/json/dashboardMenuPublic.json';
+import dashboardMenuAuth from '@/assets/json/dashboardMenuAuth.json';
+import dashboardPublic from '@/assets/json/dashboardPublic.json';
+import dashboardAuth from '@/assets/json/dashboardAuth.json';
+import homeMenuPublic from '@/assets/json/homeMenuPublic.json';
+import homeMenuAuth from '@/assets/json/homeMenuAuth.json';
+import homePublic from '@/assets/json/homePublic.json';
+import homeAuth from '@/assets/json/homeAuth.json';
+import login from '@/assets/json/login.json';
+import planning from '@/assets/json/planning.json';
+import profile from '@/assets/json/profile.json';
+import security from '@/assets/json/security.json';
+import settings from '@/assets/json/settings.json';
+
 export default {
 	name: 'RTVCoreView',
 	created: function () {
@@ -30,8 +42,7 @@ export default {
 		};
 	},
 	props: [
-		'menuItems',
-		'updateMenu'
+		'menuItems'
 	],
 	methods: {
 		async updatePage (path, oldPath) {
@@ -48,16 +59,12 @@ export default {
 				return;
 			}
 			// this.menuItems.splice(0);
-			// this.menuItems = {};
+			// this.components.splice(0);
 			this.components.splice(0);
 			if (path === '/') {
 				const resp = await this.$fetchJSON('/api/view/_landing_');
-				resp.data.menu.forEach((ele) => {
-					this.menuItems.push(ele);
-				});
 				this.components = resp.data.components;
 			} else if (path.includes('/form/')) {
-				console.log('pushing form');
 				this.components.push({
 					name: 'rtv-core-form',
 					data: {
@@ -66,32 +73,53 @@ export default {
 						}
 					}
 				});
+			} else if (path.includes('/example/login')) {
+				this.updateMenu(homeMenuPublic);
+				this.components = login.data.components;
+			} else if (path.includes('/example/home_public')) {
+				this.updateMenu(homeMenuPublic);
+				this.components = homePublic.data.components;
+			} else if (path.includes('/example/home_auth')) {
+				this.updateMenu(homeMenuAuth);
+				this.components = homeAuth.data.components;
+			} else if (path.includes('/example/dashboard_public')) {
+				this.updateMenu(dashboardMenuPublic);
+				this.components = dashboardPublic.data.components;
+			} else if (path.includes('/example/dashboard_auth')) {
+				this.updateMenu(dashboardMenuAuth);
+				this.components = dashboardAuth.data.components;
+			} else if (path.includes('/example/contract/planning')) {
+				this.updateMenu(homeMenuPublic);
+				this.components = planning.data.components;
+			} else if (path.includes('/example/dashboard/profile')) {
+				this.updateMenu(dashboardMenuAuth);
+				this.components = profile.data.components;
+			} else if (path.includes('/example/dashboard/security')) {
+				this.updateMenu(dashboardMenuAuth);
+				this.components = security.data.components;
+			} else if (path.includes('/example/dashboard/settings')) {
+				this.updateMenu(dashboardMenuAuth);
+				this.components = settings.data.components;
 			} else if (path.includes('/example/home')) {
 				const resp = homeData;
 				if (typeof resp.data.menu !== 'undefined') {
-					this.updateMenu(resp.data.menu);
-					// resp.data.menu.forEach((ele) => {
-					// 	this.menuItems.push(ele);
-					// });
+					this.$store.commit('updateMenu', resp.data.menu);
 				}
 				this.components = resp.data.components;
 			} else if (path.includes('/example/dashboard')) {
 				const resp = dashboardData;
 				if (typeof resp.data.menu !== 'undefined') {
-					this.updateMenu(resp.data.menu);
-					// resp.data.menu.forEach((ele) => {
-					// 	this.menuItems.push(ele);
-					// });
+					this.$store.commit('updateMenu', resp.data.menu);
 				}
 				this.components = resp.data.components;
 			} else {
-				const resp = await this.$fetchJSON('/api/view' + this.$store.state.route.path);
-				console.log('pushing components');
+				const resp = await this.$fetchJSON('/api/view' + path);
 				if (typeof resp.data.menu !== 'undefined') {
 					resp.data.menu.forEach((ele) => {
 						this.menuItems.push(ele);
 					});
 				}
+				console.log(resp.data.components);
 				this.components = resp.data.components;
 			}
 			this.$store.commit('setLoading', false);

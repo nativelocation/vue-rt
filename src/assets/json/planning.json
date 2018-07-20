@@ -1,0 +1,93 @@
+
+{
+	"data": {
+		"menu": {
+			"name": "mainmenu",
+			"role": "public"
+		},
+		"components": [
+			{
+				"type": "rtv-core-banner",
+				"data": {
+					"class": {
+						"home-banner-image": true
+					},
+					"props": {
+						"subComponents": [
+							{
+								"type": "rtv-core-link",
+								"data": {
+									"props": {
+										"label": "Planning Projects",
+										"href": "/oneoffice/contract/planning",
+										"iconName": "chess-knight",
+										"textStyles": {
+											"color": "white"
+										}
+									},
+									"class": "category col-lg-3"
+								}
+							},
+							{
+								"type": "rtv-core-link",
+								"data": {
+									"props": {
+										"label": "Projects in Bidding",
+										"href": "/oneoffice/contract/bidding",
+										"iconName": "chess-rook",
+										"textStyles": {
+											"color": "white"
+										}
+									},
+									"class": "category col-lg-3"
+								}
+							},
+							{
+								"type": "rtv-core-link",
+								"data": {
+									"props": {
+										"label": "Projects in Construction",
+										"href": "/oneoffice/contract/constructionp",
+										"iconName": "chess-pawn",
+										"textStyles": {
+											"color": "white"
+										}
+									},
+									"class": "category col-lg-3"
+								}
+							},
+							{
+								"type": "rtv-core-link",
+								"data": {
+									"props": {
+										"label": "Reports",
+										"href": "/oneoffice/reports",
+										"iconName": "chess-bishop",
+										"textStyles": {
+											"color": "white"
+										}
+									},
+									"class": "category col-lg-3"
+								}
+							}
+						]
+					}
+				}
+			},
+			{
+				"type": "rtv-core-main",
+				"data": {
+					"props": {
+						"header": "Planning Projects",
+						"components": [
+							{
+								"type": "rtv-core-table",
+								"data": {}
+							}
+						]
+					}
+				}
+			}
+		]
+	}
+}

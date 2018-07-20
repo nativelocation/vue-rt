@@ -1,0 +1,361 @@
+{
+    "name": "dashboardMenu",
+    "role": "authenticated",
+    "menus": [
+        {
+            "type": "rtv-core-modal-add",
+            "name": "addModal",
+            "iconName": "add",
+            "data": {
+                "props": {
+                    "subComponents": [
+                        {
+                            "type": "rtv-core-action",
+                            "name": "contract",
+                            "data": {
+                                "props": {
+                                    "label": "New Contract",
+                                    "textStyles": {
+                                        "color": "black",
+                                        "textAlign": "left"
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "type": "rtv-core-link",
+                            "data": {
+                                "props": {
+                                    "label": "Ad for Bid (Long Form)",
+                                    "href": "oneoffice/create/**",
+                                    "textStyles": {
+                                        "color": "black",
+                                        "textAlign": "left"
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "type": "rtv-core-link",
+                            "data": {
+                                "props": {
+                                    "label": "Daily Journal",
+                                    "href": "oneoffice/create/**",
+                                    "textStyles": {
+                                        "color": "black",
+                                        "textAlign": "left"
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "type": "rtv-core-link",
+                            "data": {
+                                "props": {
+                                    "label": "New Contract Template",
+                                    "href": "oneoffice/create/**",
+                                    "textStyles": {
+                                        "color": "black",
+                                        "textAlign": "left"
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "type": "rtv-core-link",
+                            "data": {
+                                "props": {
+                                    "label": "Ad for Bid (Short)",
+                                    "href": "oneoffice/create/**",
+                                    "textStyles": {
+                                        "color": "black",
+                                        "textAlign": "left"
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "type": "rtv-core-link",
+                            "data": {
+                                "props": {
+                                    "label": "Transaction",
+                                    "href": "oneoffice/create/**",
+                                    "textStyles": {
+                                        "color": "black",
+                                        "textAlign": "left"
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "type": "rtv-core-link",
+                            "data": {
+                                "props": {
+                                    "label": "Project Items",
+                                    "href": "oneoffice/create/**",
+                                    "textStyles": {
+                                        "color": "black",
+                                        "textAlign": "left"
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "type": "rtv-core-link",
+                            "data": {
+                                "props": {
+                                    "label": "Contract Changes",
+                                    "href": "oneoffice/create/**",
+                                    "textStyles": {
+                                        "color": "black",
+                                        "textAlign": "left"
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "type": "rtv-core-link",
+                            "data": {
+                                "props": {
+                                    "label": "Material on Hand",
+                                    "href": "oneoffice/create/**",
+                                    "textStyles": {
+                                        "color": "black",
+                                        "textAlign": "left"
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "type": "rtv-core-link",
+                            "data": {
+                                "props": {
+                                    "label": "Funding Sources",
+                                    "href": "oneoffice/create/**",
+                                    "textStyles": {
+                                        "color": "black",
+                                        "textAlign": "left"
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "type": "rtv-core-link",
+                            "data": {
+                                "props": {
+                                    "label": "Consultants",
+                                    "href": "oneoffice/create/**",
+                                    "textStyles": {
+                                        "color": "black",
+                                        "textAlign": "left"
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "type": "rtv-core-link",
+                            "data": {
+                                "props": {
+                                    "label": "Encumbrance",
+                                    "href": "oneoffice/create/**",
+                                    "textStyles": {
+                                        "color": "black",
+                                        "textAlign": "left"
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "type": "rtv-core-link",
+                            "data": {
+                                "props": {
+                                    "label": "Funding Splits",
+                                    "href": "oneoffice/create/**",
+                                    "textStyles": {
+                                        "color": "black",
+                                        "textAlign": "left"
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "type": "rtv-core-link",
+                            "data": {
+                                "props": {
+                                    "label": "Weekly Diary",
+                                    "href": "oneoffice/create/**",
+                                    "textStyles": {
+                                        "color": "black",
+                                        "textAlign": "left"
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "type": "rtv-core-link",
+                            "data": {
+                                "props": {
+                                    "label": "State Aid Payment Requests",
+                                    "href": "oneoffice/create/**",
+                                    "textStyles": {
+                                        "color": "black",
+                                        "textAlign": "left"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "type": "rtv-core-modal-search",
+            "name": "searchModal",
+            "iconName": "search"
+        },
+        {
+            "type": "rtv-core-modal-settings",
+            "name": "settingsModal",
+            "iconName": "settings",
+            "data": {
+                "props": {
+                    "subComponents": [
+                        {
+                            "type": "rtv-core-data",
+                            "data": {
+                                "props": {
+                                    "label": "Hennepin County",
+                                    "click": "openHennepinCounty"
+                                }
+                            }
+                        },
+                        {
+                            "type": "rtv-core-data",
+                            "data": {
+                                "props": {
+                                    "label": "Your County",
+                                    "click": "openYourCounty"
+                                }
+                            }
+                        },
+                        {
+                            "type": "rtv-core-action",
+                            "name": "organization",
+                            "data": {
+                                "props": {
+                                    "label": "New Organization",
+                                    "click": "openOrganization",
+                                    "textStyles": {
+                                        "color": "black",
+                                        "textAlign": "left"
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "type": "rtv-core-action",
+                            "name": "contact",
+                            "data": {
+                                "props": {
+                                    "label": "New Contact",
+                                    "click": "openContact",
+                                    "textStyles": {
+                                        "color": "black",
+                                        "textAlign": "left"
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "type": "rtv-core-action",
+                            "name": "employee",
+                            "data": {
+                                "props": {
+                                    "label": "New Employee",
+                                    "click": "openEmployee",
+                                    "textStyles": {
+                                        "color": "black",
+                                        "textAlign": "left"
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "type": "rtv-core-action",
+                            "name": "userAccount",
+                            "data": {
+                                "props": {
+                                    "label": "New UserAccount",
+                                    "click": "openUserAccount",
+                                    "textStyles": {
+                                        "color": "black",
+                                        "textAlign": "left"
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "type": "rtv-core-action",
+                            "name": "item",
+                            "data": {
+                                "props": {
+                                    "label": "New Item",
+                                    "click": "openItem",
+                                    "textStyles": {
+                                        "color": "black",
+                                        "textAlign": "left"
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "type": "rtv-core-link",
+                            "data": {
+                                "props": {
+                                    "label": "My Account",
+                                    "href": "oneOffice/profile/**",
+                                    "textStyles": {
+                                        "color": "black",
+                                        "textAlign": "left"
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "type": "rtv-core-link",
+                            "data": {
+                                "props": {
+                                    "label": "Settings",
+                                    "href": "oneOffice/profile/**",
+                                    "textStyles": {
+                                        "color": "black",
+                                        "textAlign": "left"
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "type": "rtv-core-action",
+                            "name": "logOut",
+                            "data": {
+                                "props": {
+                                    "label": "Sign Out",
+                                    "click": "openSignOut",
+                                    "textStyles": {
+                                        "color": "black",
+                                        "textAlign": "left"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "type": "rtv-core-modal-help",
+            "name": "helpModal",
+            "iconName": "help"
+        }
+    ]
+}

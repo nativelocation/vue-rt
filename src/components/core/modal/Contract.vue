@@ -221,7 +221,7 @@ import Footer from '@/components/core/Footer.vue';
 import ModalHelp from '@/components/core/modal/ModalHelp.vue';
 
 export default {
-	name: 'RTVNewContract',
+	name: 'RTVCoreModalContract',
 	data: function () {
 		return {
 			employeeNumber: '',

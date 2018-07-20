@@ -3,64 +3,11 @@
 	"data": {
 		"menu": {
 			"name": "mainmenu",
-			"role": "public",
-			"menus": [
-				{
-					"label": "Home",
-					"href": "/"
-				},
-				{
-					"label": "Projects",
-					"sub": [
-						{
-							"label": "Planning",
-							"href": "/oneoffice/contract/planning",
-							"disabled": false
-						},
-						{
-							"label": "Bidding",
-							"href": "/oneoffice/contract/bidding",
-							"disabled": false
-						},
-						{
-							"label": "Construction",
-							"href": "/oneoffice/contract/construction",
-							"disabled": false
-						}
-					]
-				},
-				{
-					"label": "Messages",
-					"sub": [
-						{
-							"label": "New Messages",
-							"href": "/messages/new",
-							"disabled": false
-						},
-						{
-							"label": "Bidding",
-							"href": "/messages/help",
-							"disabled": false
-						}
-					]
-				},
-				{
-					"label": "Reports",
-					"href": "/reports"
-				},
-				{
-					"label": "Search",
-					"href": "/search"
-				},
-				{
-					"label": "Login",
-					"href": "/login"
-				}
-			]
+			"role": "authentication"
 		},
 		"components": [
 			{
-				"type": "rtv-core-banner",
+				"name": "rtv-core-banner",
 				"data": {
 					"class": {
 						"home-banner-image": true
@@ -68,13 +15,13 @@
 					"props": {
 						"subComponents": [
 							{
-								"type": "rtv-core-link",
+								"name": "rtv-core-link",
 								"data": {
 									"props": {
 										"label": "Planning Projects",
 										"href": "/oneoffice/contract/planning",
 										"iconName": "chess-knight",
-										"styles": {
+										"textStyles": {
 											"color": "white"
 										}
 									},
@@ -82,13 +29,13 @@
 								}
 							},
 							{
-								"type": "rtv-core-link",
+								"name": "rtv-core-link",
 								"data": {
 									"props": {
 										"label": "Projects in Bidding",
 										"href": "/oneoffice/contract/bidding",
 										"iconName": "chess-rook",
-										"styles": {
+										"textStyles": {
 											"color": "white"
 										}
 									},
@@ -96,13 +43,13 @@
 								}
 							},
 							{
-								"type": "rtv-core-link",
+								"name": "rtv-core-link",
 								"data": {
 									"props": {
 										"label": "Projects in Construction",
 										"href": "/oneoffice/contract/constructionp",
 										"iconName": "chess-pawn",
-										"styles": {
+										"textStyles": {
 											"color": "white"
 										}
 									},
@@ -110,13 +57,13 @@
 								}
 							},
 							{
-								"type": "rtv-core-link",
+								"name": "rtv-core-link",
 								"data": {
 									"props": {
 										"label": "Reports",
 										"href": "/oneoffice/reports",
 										"iconName": "chess-bishop",
-										"styles": {
+										"textStyles": {
 											"color": "white"
 										}
 									},
@@ -128,13 +75,13 @@
 				}
 			},
 			{
-				"type": "rtv-core-main",
+				"name": "rtv-core-main",
 				"data": {
 					"props": {
 						"header": "Lorem ipsum dolor sit amet",
 						"components": [
 							{
-								"name": "rtv-core-paragraph",
+								"type": "rtv-core-paragraph",
 								"data": {
 									"props": {
 										"header": "Suspendisse quis porttitor ipsum.",
@@ -143,7 +90,7 @@
 								}
 							},
 							{
-								"name": "rtv-core-paragraph",
+								"type": "rtv-core-paragraph",
 								"data": {
 									"props": {
 										"header": "Pellentesque dictum massa.",

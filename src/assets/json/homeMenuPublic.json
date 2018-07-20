@@ -1,0 +1,57 @@
+{
+	"name": "mainmenu",
+	"role": "public",
+	"menus": [
+		{
+			"label": "Home",
+			"href": "/"
+		},
+		{
+			"label": "Projects",
+			"sub": [
+				{
+					"label": "Planning",
+					"href": "/oneoffice/contract/planning",
+					"disabled": false
+				},
+				{
+					"label": "Bidding",
+					"href": "/oneoffice/contract/bidding",
+					"disabled": false
+				},
+				{
+					"label": "Construction",
+					"href": "/oneoffice/contract/construction",
+					"disabled": false
+				}
+			]
+		},
+		{
+			"label": "Messages",
+			"sub": [
+				{
+					"label": "New Messages",
+					"href": "/messages/new",
+					"disabled": false
+				},
+				{
+					"label": "Bidding",
+					"href": "/messages/help",
+					"disabled": false
+				}
+			]
+		},
+		{
+			"label": "Reports",
+			"href": "/reports"
+		},
+		{
+			"label": "Search",
+			"href": "/search"
+		},
+		{
+			"label": "Login",
+			"href": "/login"
+		}
+	]
+}

@@ -148,6 +148,7 @@ import Footer from '@/components/core/Footer.vue';
 import ModalHelp from '@/components/core/modal/ModalHelp.vue';
 
 export default {
+	name: 'RTVCoreModalOrganization',
 	data: function () {
 		return {
 			businessName: '',
@@ -193,7 +194,7 @@ export default {
 		cancelOrganization () {
 		},
 		handleHelp () {
-			this.openHelp = true;
+			this.openHelp = !this.openHelp;
 		},
 		handleCloseHelp () {
 			this.openHelp = false;

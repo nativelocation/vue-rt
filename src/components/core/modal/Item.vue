@@ -101,6 +101,7 @@ import Footer from '@/components/core/Footer.vue';
 import ModalHelp from '@/components/core/modal/ModalHelp.vue';
 
 export default {
+	name: 'RTVCoreModalItem',
 	data: function () {
 		return {
 			itemNumber: '',

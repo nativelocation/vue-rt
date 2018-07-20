@@ -18,14 +18,15 @@
 </template>
 
 <script>
-	export default {
-		props: {
-			close: {
-				type: Function,
-				default: () => {}
-			}
+export default {
+	name: 'RTVCoreModalInnerHeader',
+	props: {
+		close: {
+			type: Function,
+			default: () => {}
 		}
-	};
+	}
+};
 </script>
 
 <style lang="sass">
@@ -34,11 +35,11 @@
 	.blur-layer {
 		position: fixed;
 		top: 0;
-		right: 0;
-		left: 0;
+		left: -100vw;
 		bottom: 0;
-		opacity: 0.5;
+		opacity: 0;
 		background: $black;
+		width: 100vw;
 	}
 	.help-dropdown {
 		position: absolute;
@@ -48,10 +49,10 @@
 		background: $white;
 		z-index: 100;
 		padding: 2rem 45px;
-		font-family: arial;
-		li {
 			font-size: 12px;
 			color: $blue;
+		font-family: arial;
+		li {
 		}
 		.help-dropdown-title {
 			font-family: cabin;

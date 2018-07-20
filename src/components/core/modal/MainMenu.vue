@@ -27,6 +27,7 @@
 
 <script>
 export default {
+	name: 'RTVCoreModalMainMenu',
 	props: {
 		show: {
 			type: Boolean,

@@ -1,0 +1,125 @@
+{
+	"data": {
+		"menu": {
+			"name": "dashboardMenu",
+			"role": "authenticated"
+		},
+		"components": [
+			{
+				"type": "rtv-core-dashboard",
+				"name": "dashboard",
+				"data": {
+					"props": {
+						"subComponents": [
+							{
+								"type": "rtv-core-report",
+								"name": "dashboardReport",
+								"data": {
+									"props": {
+										"header": {
+											"title": "Report",
+											"styles": {}
+										},
+										"footer": {
+											"title": "VIEW CURRENT PLAN",
+											"styles": {}
+										},
+										"requestData": {
+											"method": "GET",
+											"path": "/api/oneoffice/dashboard/",
+											"body": {}
+										}
+									}
+								}
+							},
+							{
+								"type": "rtv-core-report",
+								"name": "dashboardReport",
+								"data": {
+									"props": {
+										"header": {
+											"title": "Project Details",
+											"styles": {}
+										},
+										"footer": {
+											"title": "VIEW CURRENT PLAN",
+											"styles": {}
+										},
+										"requestData": {
+											"method": "GET",
+											"path": "/api/oneoffice/dashboard/",
+											"body": {}
+										}
+									}
+								}
+							},
+							{
+								"type": "rtv-core-report",
+								"name": "dashboardReport",
+								"data": {
+									"props": {
+										"header": {
+											"title": "Messaging",
+											"styles": {}
+										},
+										"footer": {
+											"title": "VIEW CURRENT PLAN",
+											"styles": {}
+										},
+										"requestData": {
+											"method": "GET",
+											"path": "/api/oneoffice/dashboard/",
+											"body": {}
+										}
+									}
+								}
+							},
+							{
+								"type": "rtv-core-report",
+								"name": "dashboardReport",
+								"data": {
+									"props": {
+										"header": {
+											"title": "Report",
+											"styles": {}
+										},
+										"footer": {
+											"title": "VIEW CURRENT PLAN",
+											"styles": {}
+										},
+										"requestData": {
+											"method": "GET",
+											"path": "/api/oneoffice/dashboard/",
+											"body": {}
+										}
+									}
+								}
+							},
+							{
+								"type": "rtv-core-report",
+								"name": "dashboardReport",
+								"data": {
+									"props": {
+										"header": {
+											"title": "Report",
+											"styles": {}
+										},
+										"footer": {
+											"title": "VIEW CURRENT PLAN",
+											"styles": {}
+										},
+										"requestData": {
+											"method": "GET",
+											"path": "/api/oneoffice/dashboard/",
+											"body": {}
+										}
+									}
+								}
+							}
+						]
+					}
+				}
+			}
+		]
+	}
+}

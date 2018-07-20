@@ -1,10 +1,10 @@
 <template>
 <div class="link-wrapper">
-	<b-link :to="'/' + href" class="link-wrapper">
-		<div>
+	<b-link :to="'/' + href" class="link-wrapper" :style="styles">
+		<div :style="imgStyles">
 			<icon v-if="iconName !== null" :name="iconName" class="icon"/>
 		</div>
-		<div :style="styles">
+		<div :style="textStyles">
 			{{ label }}
 		</div>
 	</b-link>
@@ -15,8 +15,7 @@ export default {
 	name: 'RTVCoreLink',
 	props: {
 		label: {
-			type: String,
-			default: ''
+			type: String
 		},
 		iconName: {
 			type: String,
@@ -26,9 +25,14 @@ export default {
 			type: String,
 			default: ''
 		},
+		imgStyles: {
+			type: Object
+		},
+		textStyles: {
+			type: Object
+		},
 		styles: {
-			type: Object,
-			default: {}
+			type: Object
 		}
 	}
 };

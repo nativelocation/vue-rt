@@ -1,11 +1,9 @@
 <template>
 	<div id="app">
-		<RTVCoreHeader :menuItems="menuItems"/>
+		<RTVCoreHeader/>
         <div class="app-content">
 			<router-view
-				v-show="!$store.state.loading"
-				:menuItems="menuItems"
-				:updateMenu="updateMenu"/>
+				v-show="!$store.state.loading"/>
 			<icon
 				id="loader"
 				name="spinner"
@@ -25,13 +23,7 @@ export default {
 	name: 'app',
 	data: function () {
 		return {
-			menuItems: {}
 		};
-	},
-	methods: {
-		updateMenu (menu) {
-			this.menuItems = menu;
-		}
 	},
 	components: {
 		RTVCoreHeader,

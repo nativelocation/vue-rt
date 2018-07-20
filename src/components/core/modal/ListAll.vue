@@ -1,6 +1,6 @@
 <template>
 <div class="container-fluid h-100 p-0 m-0">
-	<ModalHeader :title="title" :handleClose="handleClose"/>
+	<ModalHeader title="List All" :handleClose="handleClose" :handleHelp="handleHelp"/>
 	<div class="listAll-modal-body">
 		<!-- <TableFilter
 			:filter="filter"
@@ -16,6 +16,7 @@
 			:searchText="putSearchText"/> -->
 	</div>
 	<Footer />
+	<ModalHelp v-if="openHelp" :close="handleCloseHelp"/>
 </div>
 </template>
 
@@ -24,9 +25,12 @@ import ModalHeader from '@/components/core/modal/ModalHeader.vue';
 // import TableFilter from '@/components/core/TableFilter.vue';
 // import Table from '@/components/core/Table.vue';
 import Footer from '@/components/core/Footer.vue';
+import ModalHelp from '@/components/core/modal/ModalHelp.vue';
 export default {
+	name: 'RTVCoreModalListAll',
 	data: function () {
 		return {
+			openHelp: false,
 			filter: {
 				name: 'Filter',
 				field: 'contractNo',
@@ -303,6 +307,12 @@ export default {
 		},
 		getSearchText (text) {
 			this.searchText = text;
+		},
+		handleHelp () {
+			this.openHelp = true;
+		},
+		handleCloseHelp () {
+			this.openHelp = false;
 		}
 	},
 	computed: {
@@ -321,6 +331,7 @@ export default {
 	},
 	components: {
 		// TableFilter,
+		ModalHelp,
 		ModalHeader,
 		Footer
 		// Table

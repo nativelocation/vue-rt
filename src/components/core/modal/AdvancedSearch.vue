@@ -1,6 +1,6 @@
 <template>
 <div class="container-fluid h-100 p-0 m-0">
-	<ModalHeader :title="title" :handleClose="handleClose"/>
+	<ModalHeader title="Advanced Search" :handleClose="handleClose" :handleHelp="handleHelp"/>
 	<div class="advancedSearch-modal-body">
 		<div class="d-flex flex-wrap col-lg-12 p-0">
 			<div class="col-lg-3 px-2">
@@ -53,6 +53,7 @@
 		</b-table>
 	</div>
 	<Footer />
+	<ModalHelp v-if="openHelp" :close="handleCloseHelp"/>
 </div>
 </template>
 
@@ -60,11 +61,14 @@
 import ModalHeader from '@/components/core/modal/ModalHeader.vue';
 import Footer from '@/components/core/Footer.vue';
 import VueDatepickerLocal from 'vue-datepicker-local';
+import ModalHelp from '@/components/core/modal/ModalHelp.vue';
 import _ from 'lodash';
 
 export default {
+	name: 'RTVCoreModalAdvancedSearch',
 	data: function () {
 		return {
+			openHelp: false,
 			filter: {
 				name: 'Filter',
 				field: 'contractNo',
@@ -359,6 +363,12 @@ export default {
 			this.contract_number = '';
 			this.category = '';
 			this.sub_category = '';
+		},
+		handleHelp () {
+			this.openHelp = true;
+		},
+		handleCloseHelp () {
+			this.openHelp = false;
 		}
 	},
 	computed: {
@@ -380,6 +390,7 @@ export default {
 		}
 	},
 	components: {
+		ModalHelp,
 		ModalHeader,
 		Footer,
 		VueDatepickerLocal

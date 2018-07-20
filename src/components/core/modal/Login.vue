@@ -4,19 +4,21 @@
 		<div class="login-modal-container d-flex justify-content-center">
 			<div class="login-modal">
 				<label class="login-modal-title">One Office</label>
-				<label>Username</label>
-				<div class="login-modal-username mb-4">
-					<input class="border-0 py-0 px-2 m-0" />
-				</div>
-				<label>Password</label>
-				<div class="login-modal-password">
-					<input class="border-0 py-0 px-2 m-0" />
-				</div>
+				<b-form-row class="mb-4">
+					<label class="m-0">Username</label>
+					<b-form-input v-model="email" name="email" class="login-modal-username border-0 py-0 px-2 m-0"></b-form-input>
+				</b-form-row>
+				<b-form-row>
+					<label class="m-0">Password</label>
+					<b-form-input
+						type="password"
+						v-model="pw" @keypress.native="submitLogin"
+						name="pw"
+						class="login-modal-password border-0 py-0 px-2 m-0"/>
+				</b-form-row>
 				<div class="mt-3 d-flex align-items-center justify-content-between">
-					<label>Lost your password?</label>
-					<div @click="login" class="login-modal-btn px-2">
-						Log In
-					</div>
+					<b-link :to="'/core/forgetpass'" class="lost-password">Lost your password?</b-link>
+					<div class="login-modal-btn px-2" @click="postLogin">Log In</div>
 				</div>
 			</div>
 		</div>
@@ -27,6 +29,13 @@
 <script>
 // import store from '../../store/index';
 export default {
+	name: 'RTVCoreModalLogin',
+	data: function () {
+		return {
+			email: null,
+			pw: null
+		};
+	},
 	props: {
 		handleClose: {
 			type: Function,
@@ -34,7 +43,29 @@ export default {
 		}
 	},
 	methods: {
-		login () {}
+		async getCSRF () {
+			return this.$fetchJSON('/api/csrfp');
+		},
+		submitLogin (event) {
+			if (event.keyCode === 13) {
+				event.preventDefault();
+				this.postLogin();
+			}
+		},
+		async postLogin () {
+			const csrf = (await this.getCSRF()).data.token;
+			// output message when messaging system is worked out
+			if (csrf === null) return;
+			const json = {
+				email: this.email,
+				password: this.pw,
+				csrfp: csrf
+			};
+			this.$store.commit('setLoading', true);
+			await this.$fetchJSON('/api/auth/login', 'POST', json);
+			this.$store.commit('setLoading', false);
+			this.$router.push(this.redirect);
+		}
 	}
 };
 </script>
@@ -49,6 +80,10 @@ export default {
 		flex-direction: column;
 		font-size: 14px;
 		font-family: arial;
+		.login-modal-password,
+		.login-modal-username {
+			border-radius: 0;
+		}
 		.login-modal-title {
 			font-size: 24px;
 			font-weight: 100;

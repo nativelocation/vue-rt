@@ -1,0 +1,107 @@
+
+{
+	"data": {
+		"menu": {
+			"name": "mainmenu",
+			"role": "public"
+		},
+		"components": [
+			{
+				"type": "rtv-core-banner",
+				"data": {
+					"class": {
+						"home-banner-image": true
+					},
+					"props": {
+						"subComponents": [
+							{
+								"type": "rtv-core-link",
+								"data": {
+									"props": {
+										"label": "Planning Projects",
+										"href": "/oneoffice/contract/planning",
+										"iconName": "chess-knight",
+										"textStyles": {
+											"color": "white"
+										}
+									},
+									"class": "category col-lg-3"
+								}
+							},
+							{
+								"type": "rtv-core-link",
+								"data": {
+									"props": {
+										"label": "Projects in Bidding",
+										"href": "/oneoffice/contract/bidding",
+										"iconName": "chess-rook",
+										"textStyles": {
+											"color": "white"
+										}
+									},
+									"class": "category col-lg-3"
+								}
+							},
+							{
+								"type": "rtv-core-link",
+								"data": {
+									"props": {
+										"label": "Projects in Construction",
+										"href": "/oneoffice/contract/constructionp",
+										"iconName": "chess-pawn",
+										"textStyles": {
+											"color": "white"
+										}
+									},
+									"class": "category col-lg-3"
+								}
+							},
+							{
+								"type": "rtv-core-link",
+								"data": {
+									"props": {
+										"label": "Reports",
+										"href": "/oneoffice/reports",
+										"iconName": "chess-bishop",
+										"textStyles": {
+											"color": "white"
+										}
+									},
+									"class": "category col-lg-3"
+								}
+							}
+						]
+					}
+				}
+			},
+			{
+				"type": "rtv-core-main",
+				"data": {
+					"props": {
+						"header": "Lorem ipsum dolor sit amet",
+						"components": [
+							{
+								"type": "rtv-core-paragraph",
+								"data": {
+									"props": {
+										"header": "Suspendisse quis porttitor ipsum.",
+										"content": "Posuere ullamcorper cursus quis, porta vel magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aenean et diam quis ligula molestie auctor. Duis erat odio, lacinia sit amet tristique vitae, viverra ac erat. Duis pulvinar vel ex a lobortis.Integer nec mauris congue, faucibus lacus nec, faucibus justo. Nulla ac nunc id ipsum volutpat accumsan. Cras sollicitudin nisi leo, vitae vulputate ante pharetra nec. In vulputate eleifend sollicitudin. In maximus sapien odio, eget placerat purus aliquam vel. Vestibulum luctus eros in ex facilisis ultricies vitae a nisl. Mauris ullamcorper nulla id nisi facilisis, ut faucibus dolor placerat. Etiam ac nisl neque. Integer mi justo, malesuada dignissim tincidunt sit amet, tincidunt condimentum enim. Nullam feugiat malesuada purus, ut porta nisi faucibus et. Suspendisse in posuere elit. Cras vel iaculis nulla."
+									}
+								}
+							},
+							{
+								"type": "rtv-core-paragraph",
+								"data": {
+									"props": {
+										"header": "Pellentesque dictum massa.",
+										"content": "Posuere ullamcorper cursus quis, porta vel magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aenean et diam quis ligula molestie auctor. Duis erat odio, lacinia sit amet tristique vitae, viverra ac erat. Duis pulvinar vel ex a lobortis.Integer nec mauris congue, faucibus lacus nec, faucibus justo. Nulla ac nunc id ipsum volutpat accumsan. Cras sollicitudin nisi leo, vitae vulputate ante pharetra nec. In vulputate eleifend sollicitudin. In maximus sapien odio, eget placerat purus aliquam vel. Vestibulum luctus eros in ex facilisis ultricies vitae a nisl. Mauris ullamcorper nulla id nisi facilisis, ut faucibus dolor placerat. Etiam ac nisl neque. Integer mi justo, malesuada dignissim tincidunt sit amet, tincidunt condimentum enim. Nullam feugiat malesuada purus, ut porta nisi faucibus et. Suspendisse in posuere elit. Cras vel "
+									}
+								}
+							}
+						]
+					}
+				}
+			}
+		]
+	}
+}

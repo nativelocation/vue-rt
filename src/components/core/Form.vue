@@ -1,11 +1,19 @@
 <template>
 <b-container fluid>
-	<b-form-row v-for="componentOption in componentOptions" :key="componentOption.label" @input="test">
+	<b-form-row v-for="componentOption in componentOptions" :key="componentOption.label" @input="test" class="mt-2">
 		<b-col cols="1">
 			<label>{{componentOption.label}}:</label>
 		</b-col>
 		<b-col cols="*">
 			<OptionsTranslator :config="componentOption"/>
+		</b-col>
+	</b-form-row>
+	<b-form-row class="mt-2">
+		<b-col offset="1" cols="*">
+			<b-btn class="btn-success" @click="submitForm">Save</b-btn>
+		</b-col>
+		<b-col cols="*">
+			<b-link class="btn btn-secondary  ml-3" :to="backLink">Back</b-link>
 		</b-col>
 	</b-form-row>
 </b-container>

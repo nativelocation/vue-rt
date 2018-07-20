@@ -2,25 +2,25 @@
 <div class="add-dropdown border text-left">
 	<label class="add-dropdown-title">CREATE</label>
 	<div class="d-flex flex-wrap">
-		<div class="col-sm-4 p-0 mb-3" v-for="subComponent in subComponents" :key="subComponent.name">
-			<div v-if="subComponent.type=='rtv-core-action'" @click="childState[subComponent.name]=true">
+		<div class="col-sm-4 p-0 mb-3" v-for="component in components" :key="component.id">
+			<div v-if="component.name=='rtv-core-action'" @click="childState[component.id]=true">
 				<keep-alive>
-					<RTVCoreComponentProxy :name="subComponent.type" :data="$copyObject(subComponent.data)"/>
+					<RTVCoreComponentProxy :name="component.name" :data="$copyObject(component.data)"/>
 				</keep-alive>
 			</div>
 			<div v-else>
 				<keep-alive>
-					<RTVCoreComponentProxy :name="subComponent.type" :data="$copyObject(subComponent.data)"/>
+					<RTVCoreComponentProxy :name="component.name" :data="$copyObject(component.data)"/>
 				</keep-alive>
 			</div>
 		</div>
 	</div>
-	<div v-for="subComponent in subComponents" :key="subComponent.name">
-		<div v-if="subComponent.type=='rtv-core-action'">
+	<div v-for="component in components" :key="component.id">
+		<div v-if="component.name=='rtv-core-action'">
 			<keep-alive>
 				<RTVCoreComponentProxy
-					v-if="childState[subComponent.name]"
-					:name="'rtv-core-modal-' + subComponent.name"
+					v-if="childState[component.id]"
+					:name="'rtv-core-modal-' + component.id"
 					:data="{ class: 'modal-child', props: { handleClose: handleClose }}"/>
 			</keep-alive>
 		</div>
@@ -30,22 +30,23 @@
 
 <script>
 export default {
+	name: 'RTVCoreModalAdd',
 	data: function () {
 		return {
 			childState: {
-				newContract: false
+				contract: false
 			}
 		};
 	},
 	methods: {
 		handleClose () {
-			this.childState.newContract = false;
+			this.childState.contract = false;
 		}
 	},
 	props: {
-		subComponents: {
+		components: {
 			type: Array,
-			default: []
+			default: () => []
 		}
 	}
 };

@@ -5,15 +5,15 @@
 			"role": "authenticated",
 			"menus": [
 				{
-					"type": "rtv-core-modal-add",
-					"name": "addModal",
+					"name": "rtv-core-modal-add",
+					"id": "addModal",
 					"iconName": "add",
 					"data": {
 						"props": {
-							"subComponents": [
+							"components": [
 								{
-									"type": "rtv-core-action",
-									"name": "newContract",
+									"name": "rtv-core-action",
+									"id": "newContract",
 									"data": {
 										"props": {
 											"label": "New Contract",
@@ -25,7 +25,7 @@
 									}
 								},
 								{
-									"type": "rtv-core-link",
+									"name": "rtv-core-link",
 									"data": {
 										"props": {
 											"label": "Ad for Bid (Long Form)",
@@ -38,7 +38,7 @@
 									}
 								},
 								{
-									"type": "rtv-core-link",
+									"name": "rtv-core-link",
 									"data": {
 										"props": {
 											"label": "Daily Journal",
@@ -51,7 +51,7 @@
 									}
 								},
 								{
-									"type": "rtv-core-link",
+									"name": "rtv-core-link",
 									"data": {
 										"props": {
 											"label": "New Contract Template",
@@ -64,7 +64,7 @@
 									}
 								},
 								{
-									"type": "rtv-core-link",
+									"name": "rtv-core-link",
 									"data": {
 										"props": {
 											"label": "Ad for Bid (Short)",
@@ -77,7 +77,7 @@
 									}
 								},
 								{
-									"type": "rtv-core-link",
+									"name": "rtv-core-link",
 									"data": {
 										"props": {
 											"label": "Transaction",
@@ -90,7 +90,7 @@
 									}
 								},
 								{
-									"type": "rtv-core-link",
+									"name": "rtv-core-link",
 									"data": {
 										"props": {
 											"label": "Project Items",
@@ -103,7 +103,7 @@
 									}
 								},
 								{
-									"type": "rtv-core-link",
+									"name": "rtv-core-link",
 									"data": {
 										"props": {
 											"label": "Contract Changes",
@@ -116,7 +116,7 @@
 									}
 								},
 								{
-									"type": "rtv-core-link",
+									"name": "rtv-core-link",
 									"data": {
 										"props": {
 											"label": "Material on Hand",
@@ -129,7 +129,7 @@
 									}
 								},
 								{
-									"type": "rtv-core-link",
+									"name": "rtv-core-link",
 									"data": {
 										"props": {
 											"label": "Funding Sources",
@@ -142,7 +142,7 @@
 									}
 								},
 								{
-									"type": "rtv-core-link",
+									"name": "rtv-core-link",
 									"data": {
 										"props": {
 											"label": "Consultants",
@@ -155,7 +155,7 @@
 									}
 								},
 								{
-									"type": "rtv-core-link",
+									"name": "rtv-core-link",
 									"data": {
 										"props": {
 											"label": "Encumbrance",
@@ -168,7 +168,7 @@
 									}
 								},
 								{
-									"type": "rtv-core-link",
+									"name": "rtv-core-link",
 									"data": {
 										"props": {
 											"label": "Funding Splits",
@@ -181,7 +181,7 @@
 									}
 								},
 								{
-									"type": "rtv-core-link",
+									"name": "rtv-core-link",
 									"data": {
 										"props": {
 											"label": "Weekly Diary",
@@ -194,7 +194,7 @@
 									}
 								},
 								{
-									"type": "rtv-core-link",
+									"name": "rtv-core-link",
 									"data": {
 										"props": {
 											"label": "State Aid Payment Requests",
@@ -211,19 +211,19 @@
 					}
 				},
 				{
-					"type": "rtv-core-modal-search",
-					"name": "searchModal",
+					"name": "rtv-core-modal-search",
+					"id": "searchModal",
 					"iconName": "search"
 				},
 				{
-					"type": "rtv-core-modal-settings",
-					"name": "settingsModal",
+					"name": "rtv-core-modal-settings",
+					"id": "settingsModal",
 					"iconName": "settings",
 					"data": {
 						"props": {
-							"subComponents": [
+							"components": [
 								{
-									"type": "rtv-core-data",
+									"name": "rtv-core-data",
 									"data": {
 										"props": {
 											"label": "Hennepin County",
@@ -232,7 +232,7 @@
 									}
 								},
 								{
-									"type": "rtv-core-data",
+									"name": "rtv-core-data",
 									"data": {
 										"props": {
 											"label": "Your County",
@@ -241,8 +241,8 @@
 									}
 								},
 								{
-									"type": "rtv-core-action",
-									"name": "organization",
+									"name": "rtv-core-action",
+									"id": "organization",
 									"data": {
 										"props": {
 											"label": "New Organization",
@@ -255,8 +255,8 @@
 									}
 								},
 								{
-									"type": "rtv-core-action",
-									"name": "contact",
+									"name": "rtv-core-action",
+									"id": "contact",
 									"data": {
 										"props": {
 											"label": "New Contact",
@@ -269,8 +269,8 @@
 									}
 								},
 								{
-									"type": "rtv-core-action",
-									"name": "employee",
+									"name": "rtv-core-action",
+									"id": "employee",
 									"data": {
 										"props": {
 											"label": "New Employee",
@@ -283,8 +283,8 @@
 									}
 								},
 								{
-									"type": "rtv-core-action",
-									"name": "userAccount",
+									"name": "rtv-core-action",
+									"id": "userAccount",
 									"data": {
 										"props": {
 											"label": "NewUserAccount",
@@ -297,8 +297,8 @@
 									}
 								},
 								{
-									"type": "rtv-core-action",
-									"name": "item",
+									"name": "rtv-core-action",
+									"id": "item",
 									"data": {
 										"props": {
 											"label": "New Item",
@@ -311,7 +311,7 @@
 									}
 								},
 								{
-									"type": "rtv-core-link",
+									"name": "rtv-core-link",
 									"data": {
 										"props": {
 											"label": "My Account",
@@ -324,7 +324,7 @@
 									}
 								},
 								{
-									"type": "rtv-core-link",
+									"name": "rtv-core-link",
 									"data": {
 										"props": {
 											"label": "Settings",
@@ -337,8 +337,8 @@
 									}
 								},
 								{
-									"type": "rtv-core-action",
-									"name": "logOut",
+									"name": "rtv-core-action",
+									"id": "logOut",
 									"data": {
 										"props": {
 											"label": "Sign Out",
@@ -355,12 +355,12 @@
 					}
 				},
 				{
-					"type": "rtv-core-modal-help",
-					"name": "helpModal",
+					"name": "rtv-core-modal-help",
+					"id": "helpModal",
 					"iconName": "help"
 				}
 			]
 		},
-		"components": {}
+		"components": []
 	}
 }

@@ -12,7 +12,8 @@ export default new Vuex.Store({
 	getters,
 	state: {
 		loading: true,
-		uniqueId: 1
+		uniqueId: 1,
+		menuItems: {}
 	},
 	mutations: {
 		setLoading (state, loading) {
@@ -20,6 +21,9 @@ export default new Vuex.Store({
 		},
 		incrementUniqueId (state) {
 			++state.uniqueId;
+		},
+		updateMenu (state, newMenu) {
+			state.menuItems = newMenu;
 		}
 	},
 	strict: debug

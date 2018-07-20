@@ -9,11 +9,11 @@
 			<div class="col-sm-6 pl-4">
 				<div
 					class="mouse-hover mb-3"
-					v-for="subComponent in subComponents" :key="subComponent.name"
-					v-if="subComponent.type=='rtv-core-action' && subComponent.name!='logOut'"
-					@click="childState[subComponent.name]=true">
+					v-for="component in components" :key="component.id"
+					v-if="component.name === 'rtv-core-action' && component.id !== 'logOut'"
+					@click="childState[component.id] = true">
 					<keep-alive>
-						<RTVCoreComponentProxy :name="subComponent.type" :data="$copyObject(subComponent.data)"/>
+						<RTVCoreComponentProxy :name="component.name" :data="$copyObject(component.data)"/>
 					</keep-alive>
 				</div>
 			</div>
@@ -30,14 +30,14 @@
 		</div>
 	</div>
 	<div
-		v-for="subComponent in subComponents"
-		:key="subComponent.name"
-		v-if="subComponent.type=='rtv-core-action' && subComponent.name!='logOut'">
+		v-for="component in components"
+		:key="component.id"
+		v-if="component.name ==='rtv-core-action' && component.id !== 'logOut'">
 		<keep-alive>
 			<RTVCoreComponentProxy
-				v-if="childState[subComponent.name]"
-				:name="'rtv-core-modal-' + subComponent.name"
-				:data="{ class: 'modal-child', props: { handleClose: () => { childState[subComponent.name] = false } }}"/>
+				v-if="childState[component.id]"
+				:name="'rtv-core-modal-' + component.id"
+				:data="{ class: 'modal-child', props: { handleClose: () => { childState[component.id] = false } }}"/>
 		</keep-alive>
 	</div>
 </div>
@@ -45,6 +45,7 @@
 
 <script>
 export default {
+	name: 'RTVCoreModalSettings',
 	data: function () {
 		return {
 			childState: {
@@ -61,9 +62,9 @@ export default {
 			type: Function,
 			default: () => {}
 		},
-		subComponents: {
+		components: {
 			type: Array,
-			default: []
+			default: () => []
 		}
 	}
 };

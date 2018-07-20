@@ -19,6 +19,7 @@
 import ListAll from '@/components/core/modal/ListAll';
 import AdvancedSearch from '@/components/core/modal/AdvancedSearch';
 export default {
+	name: 'RTVCoreModalSearch',
 	data: function () {
 		return {
 			listAllModalShow: false,

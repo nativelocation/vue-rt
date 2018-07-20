@@ -1,0 +1,42 @@
+{
+	"data": {
+		"menu": {
+			"name": "dashboardMenu",
+			"role": "authenticated"
+		},
+		"components": [
+			{
+				"type": "rtv-core-sidebar",
+				"data": {
+					"props": {
+						"Items": [
+							{
+								"name": "My account",
+								"iconName": "home",
+								"active": true,
+								"href": "/dashboard/profile"
+							},
+							{
+								"name": "Security & privacy",
+								"iconName": "verified_user",
+								"active": false,
+								"href": "/dashboard/security"
+							},
+							{
+								"name": "Settings",
+								"iconName": "settings",
+								"active": false,
+								"href": "/dashboard/settings"
+							}
+						],
+						"RequestData": {
+							"method": "GET",
+							"path": "/api/oneoffice/dashboard/profile",
+							"body": {}
+						}
+					}
+				}
+			}
+		]
+	}
+}

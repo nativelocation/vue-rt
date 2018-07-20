@@ -1,10 +1,10 @@
 <template>
 <div class="action-wrapper">
-	<div>
-		<div>
+	<div :style="styles">
+		<div :style="imgStyles">
 			<icon v-if="iconName !== null" :name="iconName" class="icon"/>
 		</div>
-		<div :style="styles">
+		<div :style="textStyles">
 			{{ label }}
 		</div>
 	</div>
@@ -12,23 +12,23 @@
 </template>
 <script>
 export default {
-	name: 'RTVCoreLink',
+	name: 'RTVCoreAction',
 	props: {
 		label: {
-			type: String,
-			default: ''
+			type: String
 		},
 		iconName: {
 			type: String,
 			default: null
 		},
-		href: {
-			type: String,
-			default: ''
+		imgStyles: {
+			type: Object
+		},
+		textStyles: {
+			type: Object
 		},
 		styles: {
-			type: Object,
-			default: {}
+			type: Object
 		}
 	}
 };

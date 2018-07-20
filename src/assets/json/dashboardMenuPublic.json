@@ -1,0 +1,17 @@
+{
+    "name": "dashboardMenu",
+    "role": "public",
+    "menus": [
+        {
+            "name": "searchModal",
+            "type": "rtv-core-modal-search",
+            "iconName": "search"
+        },
+        {
+            "label": "Log in",
+            "name": "loginModal",
+            "type": "rtv-core-modal-login",
+            "iconName": "exit_to_app"
+        }
+    ]
+}

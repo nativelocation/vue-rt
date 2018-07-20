@@ -3,8 +3,8 @@
 	<div class="category-icons d-flex justify-content-around align-items-center">
 		<div class="w-100 d-flex justify-content-around flex-wrap">
 			<template v-for="subComponent in subComponents">
-				<keep-alive :key="subComponent.type">
-					<RTVCoreComponentProxy :name="subComponent.type" :data="$copyObject(subComponent.data)"/>
+				<keep-alive :key="subComponent.name">
+					<RTVCoreComponentProxy :name="subComponent.name" :data="$copyObject(subComponent.data)"/>
 				</keep-alive>
 			</template>
 		</div>

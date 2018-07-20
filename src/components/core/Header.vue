@@ -2,9 +2,9 @@
 <div id="header">
 	<div class="container-fluid p-0 m-0">
 		<div
-			v-if="menuItems.name === 'mainmenu'"
+			v-if="$store.state.menuItems.name === 'mainmenu'"
 			class="menu-bar px-3 d-flex justify-content-between align-items-center"
-			:class="menuItems.role === 'authenticated' ? 'internal' : 'public'"
+			:class="$store.state.menuItems.role === 'authenticated' ? 'internal' : 'public'"
 		>
 			<div class="icon-menu-title d-flex justify-content-around align-items-center">
 				<div class="site-title">
@@ -18,7 +18,7 @@
 				<b-collapse is-nav id="nav_collapse">
 					<b-navbar-nav justified>
 						<b-nav-item
-							v-for="(item, index) in menuItems.menus"
+							v-for="(item, index) in $store.state.menuItems.menus"
 							:key="item.label">
 							<div class="menu-title d-flex align-items-center">
 								<b-nav-item v-if="typeof item.href !== 'undefined'" :to="item.href">
@@ -35,7 +35,7 @@
 										{{ subItem.label }}
 									</b-dropdown-item>
 								</b-nav-item-dropdown>
-								<span v-if="index !== menuItems.menus.length - 1" class="menu-seperate mx-2">|</span>
+								<span v-if="index !== $store.state.menuItems.menus.length - 1" class="menu-seperate mx-2">|</span>
 							</div>
 						</b-nav-item>
 					</b-navbar-nav>
@@ -44,7 +44,7 @@
 		</div>
 		<div
 			v-else
-			class="menu-bar pr-3 d-flex justify-content-between align-items-center" :class="menuItems.role === 'authenticated' ? 'internal' : 'dashboard-public'">
+			class="menu-bar pr-3 d-flex justify-content-between align-items-center" :class="$store.state.menuItems.role === 'authenticated' ? 'internal' : 'dashboard-public'">
 			<div class="icon-menu-title d-flex justify-content-around align-items-center">
 				<div class="site-title d-flex align-items-center">
 					<i class="material-icons dashboard-menu" @click="mainMenu=true">apps</i>
@@ -58,14 +58,14 @@
 			<b-navbar toggleable="md" class="navbar-custom p-0">
 				<b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
 				<b-collapse is-nav id="nav_collapse">
-					<b-navbar-nav justified :class="menuItems.role === 'authenticated' ? 'internal' : 'dashboard-public'">
+					<b-navbar-nav justified :class="$store.state.menuItems.role === 'authenticated' ? 'internal' : 'dashboard-public'">
 						<b-nav-item
-							v-for="menu in menuItems.menus"
-							:key="menu.name">
+							v-for="menu in $store.state.menuItems.menus"
+							:key="menu.id">
 							<div
 								v-if="typeof menu.label !== 'undefined'"
 								class="menu-title d-flex align-items-center pl-3">
-								<div @click="modalState[menu.name]=true" class="login_btn d-flex justify-content-center align-items-center">
+								<div @click="modalState[menu.id]=true" class="login_btn d-flex justify-content-center align-items-center">
 									<i class="material-icons md-light mr-1">{{ menu.iconName }}</i>
 									<div>{{menu.label}}</div>
 								</div>
@@ -73,7 +73,7 @@
 							<div
 								v-else
 								class="menu-title d-flex justify-content-center align-items-center">
-								<div @click="modalState[menu.name]=true" class="feature-btn d-flex justify-content-center align-items-center" :class="modalState[menu.name] ? 'feature-btn-hover' : ''">
+								<div @click="modalState[menu.id]=true" class="feature-btn d-flex justify-content-center align-items-center" :class="modalState[menu.id] ? 'feature-btn-hover' : ''">
 									<div class="feature-icon d-flex justify-content-center align-items-center rounded-circle">
 										<i class="material-icons p-1">{{ menu.iconName }}</i>
 									</div>
@@ -84,17 +84,17 @@
 				</b-collapse>
 			</b-navbar>
 		</div>
-		<b-modal v-if="menuItems.role === 'authenticated' && mainMenu" v-model="mainMenu" id="mainMenu">
+		<b-modal v-if="$store.state.menuItems.role === 'authenticated' && mainMenu" v-model="mainMenu" id="mainMenu">
 			<MainMenu/>
 		</b-modal>
 		<b-modal
-			v-for="menu in menuItems.menus"
-			:key="menu.name"
-			v-if="modalState[menu.name]"
-			v-model="modalState[menu.name]"
-			:id="menu.name">
+			v-for="menu in $store.state.menuItems.menus"
+			:key="menu.id"
+			v-if="modalState[menu.id]"
+			v-model="modalState[menu.id]"
+			:id="menu.id">
 			<keep-alive>
-				<RTVCoreComponentProxy :name="menu.type" :data="menu.data ? $copyObject(menu.data) : {}"/>
+				<RTVCoreComponentProxy :name="menu.name" :data="menu.data ? $copyObject(menu.data) : {}"/>
 			</keep-alive>
 		</b-modal>
 	</div>
@@ -116,16 +116,6 @@ export default {
 			},
 			mainMenu: false
 		};
-	},
-	props: {
-		title: {
-			type: String,
-			default: ''
-		},
-		menuItems: {
-			type: Object,
-			default: {}
-		}
 	},
 	components: {
 		MainMenu
