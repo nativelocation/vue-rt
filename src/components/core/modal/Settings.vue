@@ -7,11 +7,15 @@
 				<div class="mb-3">Your County</div>
 			</div>
 			<div class="col-sm-6 pl-4">
-				<div class="mouse-hover mb-3" @click="organizationModalShow=true">New Organization</div>
-				<div class="mouse-hover mb-3" @click="contactModalShow=true">New Contact</div>
-				<div class="mouse-hover mb-3" @click="employeeModalShow=true">New Employee</div>
-				<div class="mouse-hover mb-3" @click="userAccountModalShow=true">New User Account</div>
-				<div class="mouse-hover mb-3" @click="itemModalShow=true">New Item</div>
+				<div
+					class="mouse-hover mb-3"
+					v-for="subComponent in subComponents" :key="subComponent.name"
+					v-if="subComponent.type=='rtv-core-action' && subComponent.name!='logOut'"
+					@click="childState[subComponent.name]=true">
+					<keep-alive>
+						<RTVCoreComponentProxy :name="subComponent.type" :data="$copyObject(subComponent.data)"/>
+					</keep-alive>
+				</div>
 			</div>
 		</div>
 		<div class="setting-dropdown-right">
@@ -25,42 +29,42 @@
 			</div>
 		</div>
 	</div>
-	<Organization v-if="organizationModalShow" id="setting-child" :handleClose="() => organizationModalShow = false"/>
-	<Contact v-if="contactModalShow" id="setting-child" :handleClose="() => contactModalShow = false"/>
-	<Employee v-if="employeeModalShow" id="setting-child" :handleClose="() => employeeModalShow = false"/>
-	<Item v-if="itemModalShow" id="setting-child" :handleClose="() => itemModalShow = false"/>
-	<UserAccount v-if="userAccountModalShow" id="setting-child" :handleClose="() => userAccountModalShow = false"/>
+	<div
+		v-for="subComponent in subComponents"
+		:key="subComponent.name"
+		v-if="subComponent.type=='rtv-core-action' && subComponent.name!='logOut'">
+		<keep-alive>
+			<RTVCoreComponentProxy
+				v-if="childState[subComponent.name]"
+				:name="'rtv-core-modal-' + subComponent.name"
+				:data="{ class: 'modal-child', props: { handleClose: () => { childState[subComponent.name] = false } }}"/>
+		</keep-alive>
+	</div>
 </div>
 </template>
 
 <script>
-import Organization from '@/components/core/modal/settings/Organization.vue';
-import Contact from '@/components/core/modal/settings/Contact.vue';
-import Employee from '@/components/core/modal/settings/Employee.vue';
-import Item from '@/components/core/modal/settings/Item.vue';
-import UserAccount from '@/components/core/modal/settings/UserAccount.vue';
 export default {
 	data: function () {
 		return {
-			organizationModalShow: false,
-			contactModalShow: false,
-			employeeModalShow: false,
-			userAccountModalShow: false,
-			itemModalShow: false
+			childState: {
+				organization: false,
+				contact: false,
+				employee: false,
+				userAccount: false,
+				item: false
+			}
 		};
 	},
 	props: {
 		handleClose: {
 			type: Function,
 			default: () => {}
+		},
+		subComponents: {
+			type: Array,
+			default: []
 		}
-	},
-	components: {
-		Organization,
-		Contact,
-		Employee,
-		Item,
-		UserAccount
 	}
 };
 </script>

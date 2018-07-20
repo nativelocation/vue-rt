@@ -57,4 +57,11 @@ html, body, #app {
 	margin: 1em auto;
 	display: block;
 }
+.modal-child {
+    position: fixed !important;
+    top: 0 !important;
+    left: -100vw !important;
+    width: 100vw !important;
+    right: 0 !important;
+}
 </style>

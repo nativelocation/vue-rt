@@ -94,7 +94,7 @@
 			v-model="modalState[menu.name]"
 			:id="menu.name">
 			<keep-alive>
-				<RTVCoreComponentProxy :name="menu.type"/>
+				<RTVCoreComponentProxy :name="menu.type" :data="$copyObject(menu.data)"/>
 			</keep-alive>
 		</b-modal>
 	</div>

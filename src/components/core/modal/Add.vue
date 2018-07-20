@@ -2,60 +2,63 @@
 <div class="add-dropdown border text-left">
 	<label class="add-dropdown-title">CREATE</label>
 	<div class="d-flex flex-wrap">
-		<div class="col-sm-4 p-0 mb-3">
-			<div class="mouse-hover" @click="newContract=true">New Contract</div>
+		<div class="col-sm-4 p-0 mb-3" v-for="subComponent in subComponents" :key="subComponent.name">
+			<div v-if="subComponent.type=='rtv-core-action'" @click="childState[subComponent.name]=true">
+				<keep-alive>
+					<RTVCoreComponentProxy :name="subComponent.type" :data="$copyObject(subComponent.data)"/>
+				</keep-alive>
+			</div>
+			<div v-else>
+				<keep-alive>
+					<RTVCoreComponentProxy :name="subComponent.type" :data="$copyObject(subComponent.data)"/>
+				</keep-alive>
+			</div>
 		</div>
-		<div class="col-sm-5 p-0 mb-3">Ad for Bid (Long Form)</div>
-		<div class="col-sm-3 p-0 mb-3">Daily Journal</div>
-		<div class="col-sm-4 p-0 mb-3">New Contract Template</div>
-		<div class="col-sm-5 p-0 mb-3">Ad for Bid (Short)</div>
-		<div class="col-sm-3 p-0 mb-3">Transaction</div>
-		<div class="col-sm-4 p-0 mb-3">Project Items</div>
-		<!-- <router-link class="text-logo col-sm-4 p-0 mb-3" to="/create/project-items">
-			Project Items
-		</router-link> -->
-		<div class="col-sm-5 p-0 mb-3">Contract Changes</div>
-		<div class="col-sm-3 p-0 mb-3">Material on Hand</div>
-		<div class="col-sm-4 p-0 mb-3">Funding Sources</div>
-		<div class="col-sm-5 p-0 mb-3">Consultants</div>
-		<div class="col-sm-3 p-0 mb-3">Encumbrance</div>
-		<div class="col-sm-4 p-0 mb-3">Funding Splits</div>
-		<div class="col-sm-5 p-0 mb-3">State Aid Payment Requests</div>
-		<div class="col-sm-3 p-0 mb-3">Weekly Diary</div>
 	</div>
-	<NewContract v-if="newContract" id="add-child" :handleClose="() => newContract=false"/>
+	<div v-for="subComponent in subComponents" :key="subComponent.name">
+		<div v-if="subComponent.type=='rtv-core-action'">
+			<keep-alive>
+				<RTVCoreComponentProxy
+					v-if="childState[subComponent.name]"
+					:name="'rtv-core-modal-' + subComponent.name"
+					:data="{ class: 'modal-child', props: { handleClose: handleClose }}"/>
+			</keep-alive>
+		</div>
+	</div>
 </div>
 </template>
 
 <script>
-import NewContract from '@/components/core/modal/add/NewContract.vue';
 export default {
 	data: function () {
 		return {
-			newContract: false
+			childState: {
+				newContract: false
+			}
 		};
 	},
-	components: {
-		NewContract
+	methods: {
+		handleClose () {
+			this.childState.newContract = false;
+		}
+	},
+	props: {
+		subComponents: {
+			type: Array,
+			default: []
+		}
 	}
 };
 </script>
 
 <style lang="sass">
 @import '~$styles/variables';
-#add-child {
-    position: fixed;
-    top: 0;
-    left: -100vw;
-    width: 100vw;
-    right: 0;
-}
 #addModal {
 	.add-dropdown {
 		position: absolute;
 		top: 72px;
 		right: 232px;
-		width: 600px;
+		width: 640px;
 		background: $white;
 		z-index: 100;
 		padding: 2rem 45px;

@@ -1,13 +1,13 @@
 <template>
-<div class="link-wrapper">
-	<b-link :to="'/' + href">
+<div class="action-wrapper">
+	<div>
 		<div>
 			<icon v-if="iconName !== null" :name="iconName" class="icon"/>
 		</div>
 		<div :style="styles">
 			{{ label }}
 		</div>
-	</b-link>
+	</div>
 </div>
 </template>
 <script>
@@ -34,9 +34,8 @@ export default {
 };
 </script>
 <style lang="sass">
-@import '~$styles/fonts';
 @import '~$styles/variables';
-.link-wrapper {
+.action-wrapper {
 	box-sizing: border-box;
 	a {
 		text-align: center;
